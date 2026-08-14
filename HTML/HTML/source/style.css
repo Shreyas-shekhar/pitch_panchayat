@@ -1,0 +1,158 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+
+.content{
+    text-align: center;
+}
+
+.content h1{
+    font-size: 95px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.content h2{
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.content a{
+    font-size: 23px;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 15px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.content a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(125,16,39,.08),
+    transparent 35%),
+
+    radial-gradient(circle at bottom left,
+    rgba(255,184,77,.08),
+    transparent 40%),
+
+    #faf9f6;
+     opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-tag{
+    letter-spacing:4px;
+    font-size:14px;
+    color:#b8860b;
+    font-weight:600;
+}
+
+.hero h1{
+    font-size:clamp(4rem,8vw,7rem);
+    line-height:1;
+    margin:25px 0;
+
+    color:#7d1027;
+    font-family:"Playfair Display", serif;
+}
+
+.hero h1 span{
+    color:#c79a3d;
+}
+
+.hero p{
+    font-size:1.25rem;
+    line-height:1.8;
+    color:#555;
+    max-width:700px;
+    margin:auto;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn-primary{
+    background:#7d1027;
+    color:white;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-secondary{
+    border:2px solid #7d1027;
+    color:#7d1027;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.stats{
+    margin-top:70px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.stats h3{
+    font-size:2rem;
+    color:#7d1027;
+}
+
+.stats span{
+    color:#666;
+}
+
+.hidden{
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}

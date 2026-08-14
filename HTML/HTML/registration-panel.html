@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="source/style_registration.css">
+</head>
+<body>
+
+    <section class="logo-section">
+        <h2>OUR LOGO</h2>
+    </section>
+
+    <section class="register-section">
+
+    <div class="register-card">
+        <span class="section-tag">
+            REGISTER NOW
+        </span>
+
+        <h2>
+            Secure your seat at
+            <span>Pitch Panchayat.</span>
+        </h2>
+
+        <p>
+            Present your startup idea, receive expert feedback,
+            connect with innovators, and compete for exciting prizes.
+        </p>
+
+          <form class="register-form" id="registrationForm">
+
+
+           
+</select>
+
+            <input type="text"
+                   placeholder="full Name"
+                   id="fullName"
+                   required>
+
+            <input type="email"
+                   placeholder="Email Address"
+                   id="email"
+                   required>
+
+            <input type="tel"
+                   placeholder="Phone Number"
+                   id="phone"
+                   required>
+
+            <input type="text"
+                   placeholder="College / Organization"
+                   id="college"
+                   required>
+
+             <select id="age" required>
+                    <option value="">Select Age Group</option>
+                    <option>14-16 Years</option>
+                    <option>17-19 Years</option>
+                    <option>20-22 Years</option>
+                    <option>23+ Years</option>
+             </select>
+
+            <input type="text"
+                   placeholder="Startup / Team Name"
+                   id="startup"
+                   required>
+                   
+
+            <select id="category" required>
+                <option value="">
+                    Select Category
+                </option>
+
+                <option>
+                    Technology
+                </option>
+
+                <option>
+                    Healthcare
+                </option>
+
+                <option>
+                    Education
+                </option>
+
+                <option>
+                    Sustainability
+                </option>
+
+                <option>
+                    Other
+                </option>
+            </select>
+
+            <textarea id="idea" Describe your startup idea in a few lines rows="5">
+            </textarea>
+
+            
+      
+
+            <button type="submit">
+                Register Now →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+<button id="logoutBtn">Logout</button>
+<script type="module" src="../../register.js"></script>
+ <script type="module" src="protect.js"></script>
+</body>
+</html>

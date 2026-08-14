@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="source/style_main_web2.css" >
+    <script src="source/main_web.js" defer></script>
+    <script src="server.js" defer></script>
+    
+</head>
+<body>
+        <nav class="parliament-nav">
+
+    <div class="nav-logo">
+        <img src="logo.png" alt="">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="About">About</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+<button class="register-btn" id="openAuth">
+     Register
+</button>
+    </div>
+
+</nav>
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="intro.mp4" type="video/mp4">
+        </video>
+    </section>
+    <section class="content">
+
+<section id="about">
+
+<div class="hero-text hidden">
+
+<span class="hero-badge">
+🚀 India's Student Startup Platform
+</span>
+
+<h1>
+
+Pitch <span>Panchayat</span> 2026
+
+</h1>
+
+<p class="hero-subtitle">
+
+Where Innovation Meets Opportunity.
+
+</p>
+
+<h4>
+
+Pitch Panchayat is India's premier startup platform created exclusively for students with bold ideas and entrepreneurial ambition.
+
+Whether you're building the next AI breakthrough, solving real-world problems through technology, or launching your first venture, this is your opportunity to present your innovation before mentors, investors, founders, and industry experts.
+
+Transform your ideas into reality, compete with the brightest young innovators, receive expert mentorship, and become a part of the next generation of entrepreneurs shaping India's future.
+
+</h4>
+
+<div class="hero-buttons">
+
+<a href="#register" class="primary-btn">
+
+Register Now
+
+</a>
+
+<a href="#about-event" class="secondary-btn">
+
+Learn More
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about-event" class="hidden">
+
+<div class="about-wrapper">
+
+<div class="section-title">
+
+<span>ABOUT THE EVENT</span>
+
+<h2>
+
+Why Pitch Panchayat?
+
+</h2>
+
+</div>
+
+<div class="about-grid">
+
+<div class="about-card">
+
+<div class="about-icon">
+
+💡
+
+</div>
+
+<h3>
+
+Innovate
+
+</h3>
+
+<p>
+
+Present groundbreaking ideas that solve real-world challenges through creativity, technology and entrepreneurship.
+
+</p>
+
+</div>
+
+<div class="about-card">
+
+<div class="about-icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Connect
+
+</h3>
+
+<p>
+
+Network with investors, startup founders, mentors, incubators and talented students from across the country.
+
+</p>
+
+</div>
+
+<div class="about-card">
+
+<div class="about-icon">
+
+📈
+
+</div>
+
+<h3>
+
+Grow
+
+</h3>
+
+<p>
+
+Receive constructive feedback, gain exposure and accelerate your startup journey through expert guidance.
+
+</p>
+
+</div>
+
+<div class="about-card">
+
+<div class="about-icon">
+
+🏆
+
+</div>
+
+<h3>
+
+Compete
+
+</h3>
+
+<p>
+
+Compete for prestigious awards, recognition and exciting opportunities that can take your startup to the next level.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+        <section class="house-countdown">
+
+    <div class="countdown-header">
+<section class="hidden">
+
+        <span>THE COUNTDOWN HAS BEGUN</span>
+
+        <h2>
+        Pitch Panchayat 2026 Starts In
+        </h2>
+
+       <p>
+
+Every second brings us closer to India's most exciting student startup event.
+
+Prepare your idea, build your pitch, connect with mentors, and showcase your innovation before investors and industry experts.
+
+The next big startup story could begin with you.
+
+</p>
+
+    </div>
+
+    <div class="days-card">
+
+        <h1 id="days">00</h1>
+
+        <span>DAYS REMAINING</span>
+
+    </div>
+
+    <!-- SMALL COUNTERS -->
+    <div class="time-grid">
+
+        <div class="time-box">
+            <h3 id="hours">00</h3>
+            <span>Hours</span>
+        </div>
+
+        <div class="time-box">
+            <h3 id="minutes">00</h3>
+            <span>Minutes</span>
+        </div>
+
+        <div class="time-box">
+            <h3 id="seconds">00</h3>
+            <span>Seconds</span>
+        </div>
+
+    </div>
+     <!-- EVENT JOURNEY -->
+    <div class="event-progress">
+
+        <div class="progress-line">
+
+            <div class="progress-fill" id="progressFill"></div>
+
+        </div>
+
+        <div class="stages">
+
+            <div class="stage completed">
+                <div class="dot"></div>
+                <span>Registration</span>
+            </div>
+
+            <div class="stage completed">
+                <div class="dot"></div>
+                <span>startup screening</span>
+            </div>
+
+            <div class="stage active">
+                <div class="dot"></div>
+                <span>mentorship</span>
+            </div>
+
+            <div class="stage">
+                <div class="dot"></div>
+                <span>Grand finale</span>
+            </div>
+
+        </div>
+
+    </div> 
+    </section>
+
+    <section class="hidden">
+    <div class="countdown-buttons">
+
+        <a href="#" class="btn-primary">
+            Event Brochure
+        </a>
+
+        <a href="#" class="btn-secondary">
+            Explore event
+        </a>
+
+        <a href="#" class="primary-btn" id="openRegister">
+    Join Pitch Panchayat
+</a>
+
+    </div>
+    </section>
+
+        <section class="hidden">
+        <section id="Register">
+        <div class="button-container"> 
+            <a href="registration-panel.html" class="primary-btn">Register now</a>
+            <a href="main_site.html" class="primary-btn">brochure ⤓ </a>
+            <a href="main_site.html">learn more</a>
+            <a href="/admin-login.html">Admin</a>
+        </div>
+        </section>
+        <section id="Prizes">
+        <h1 class="hidden">
+
+Why Participate?
+
+</h1>
+
+<h4 class="hidden">
+
+Pitch Panchayat is more than a competition.
+
+It is a platform designed to help students transform innovative ideas into impactful startups.
+
+Participants will gain practical experience by presenting their ideas before entrepreneurs, investors, startup founders and industry mentors.
+
+Whether you already have a startup or just an exciting idea, Pitch Panchayat provides an opportunity to learn, connect, collaborate and grow alongside some of the brightest innovators in the country.
+
+Every participant leaves with valuable exposure, meaningful connections and unforgettable experiences.
+
+</h4>
+       </section>
+        </section>
+
+        <section class="cta-section">
+
+<div class="cta-content">
+
+<span>
+
+READY TO BUILD SOMETHING AMAZING?
+
+</span>
+
+<h2>
+
+Your Startup Journey Starts Here.
+
+</h2>
+
+<p>
+
+Take the first step toward turning your idea into reality.
+
+Meet mentors.
+
+Connect with investors.
+
+Compete with innovators.
+
+Build the future.
+
+</p>
+
+<a href="#" class="primary-btn">
+
+Register Today
+
+</a>
+
+</div>
+
+</section>
+
+        <section class="sponsors-section">
+        <section class="hidden">
+    <div class="section-header">
+        <span>POWERED BY</span>
+        <h2>Our Partners & Supporters</h2>
+        <p>Pitch Panchayat proudly collaborates with organisations, startups, incubators and institutions that believe in empowering the next generation of innovators.</p>
+    </div>
+    <!-- TITLE PARTNER -->
+    <div class="sponsor-tier">
+        <h3>Title sponsor</h3>
+
+        <div class="title-sponsor">
+            <img src="images/title-sponsor.png" alt="">
+        </div>
+    </div>
+
+    <!-- CO PARTNERS -->
+    
+    <div class="sponsor-tier">
+        <h3>Innovation Partners</h3>
+
+        <div class="sponsor-grid">
+
+            <div class="sponsor-card">
+                <img src="images/logo1.png" alt="">
+            </div>
+
+            <div class="sponsor-card">
+                <img src="images/logo2.png" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ASSOCIATES -->
+    <div class="sponsor-tier">
+        <h3>Community Partners</h3>
+
+        <div class="sponsor-grid">
+
+            <div class="sponsor-card">
+                <img src="images/logo3.png" alt="">
+            </div>
+
+            <div class="sponsor-card">
+                <img src="images/logo4.png" alt="">
+            </div>
+
+            <div class="sponsor-card">
+                <img src="images/logo5.png" alt="">
+            </div>
+
+            <div class="sponsor-card">
+                <img src="images/logo6.png" alt="">
+            </div>
+
+        </div>
+    </div>
+    </section>
+
+</section>
+    <section class="hidden">
+        <section id="Contact">
+            <h3>Let's Build Something Extraordinary Together</h3>
+            <p>Whether you're a student founder, mentor, investor, sponsor or innovation enthusiast, we'd love to hear from you.
+
+Reach out for partnerships, sponsorship opportunities, media inquiries or any questions regarding Pitch Panchayat.
+
+Together, we can create an ecosystem where every great idea gets the opportunity it deserves.</p>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<h3>📧 Email</h3>
+
+<p>
+
+support@pitchpanchayat.in
+
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>📍 Location</h3>
+
+<p>
+
+Hubballi, Karnataka, India
+
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>📞 Phone</h3>
+
+<p>
+
++91 XXXXX XXXXX
+
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>🌐 Website</h3>
+
+<p>
+
+www.pitchpanchayat.in
+
+</p>
+
+</div>
+
+</div>
+    </section>
+
+       <section class="pillars">
+          <section class="hidden">
+    <div class="pillar">
+        <div class="pillar-icon">🏛️</div>
+        <h3>Innovation</h3>
+        <p>
+           Encouraging creative thinking and solving real-world challenges through innovative ideas.
+        </p>
+    </div>
+
+    <div class="pillar">
+        <div class="pillar-icon">🎙️</div>
+        <h3>Entrepreneurship</h3>
+        <p>
+            Developing leadership, communication and business skills through practical startup experiences.
+        </p>
+    </div>
+
+    <div class="pillar">
+        <div class="pillar-icon">⭐</div>
+        <h3>Collaboration</h3>
+        <p>
+           Connecting students, mentors, investors and founders to build meaningful partnerships.
+        </p>
+    </div>
+    </section>
+    </section>
+</section>
+      <section class="hidden">
+  <section class="journey-section">
+    <section class="hidden">
+    <div class="journey-header">
+        <span>THE JOURNEY</span>
+        <h2>Road To Building Your Startup</h2>
+        <p>
+            Every successful startup begins with a single step. Follow your journey from registration to the final pitch before investors and industry experts.
+        </p>
+    </div>
+
+    <div class="journey-track">
+
+        <div class="milestone">
+            <div class="milestone-date">APRIL · WEEK 2</div>
+            <div class="milestone-card">
+                <h3>Registrations Open</h3>
+                <p>Applications open for students, innovators and aspiring entrepreneurs across India.</p>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="milestone">
+            <div class="milestone-date">MAY 26</div>
+            <div class="milestone-card">
+                <h3>Application Review</h3>
+                <p>Our panel reviews startup ideas and shortlists the most promising innovations.</p>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="milestone">
+            <div class="milestone-date">JUNE 7</div>
+            <div class="milestone-card">
+                <h3>Startup Shortlisting</h3>
+                <p>Selected startups receive confirmation and move to the mentorship stage.</p>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="milestone">
+            <div class="milestone-date">JUNE 8–12</div>
+            <div class="milestone-card">
+                <h3>Mentorship & Pitch Preparation</h3>
+                <p>Work with experienced founders and mentors to refine your business model and presentation.</p>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="milestone final">
+            <div class="milestone-date">JUNE 13–14</div>
+            <div class="milestone-card">
+                <h3>Grand Pitch Finale</h3>
+                <p>Present your startup before investors, entrepreneurs and judges for recognition, prizes and opportunities.</p>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+</section>
+</section>
+
+<section class="agenda-section">
+    <section class="hidden">
+    <div class="agenda-header">
+        <span>EVENT SCHEDULE</span>
+        <h2>Two Days of Innovation</h2>
+    </div>
+
+    <div class="agenda-grid">
+
+        <div class="day-card">
+
+            <div class="day-top">
+                <span>DAY 1</span>
+                <h3>June 13</h3>
+            </div>
+
+            <div class="schedule-item">
+                <time>10:00</time>
+                <p>Registration and checkin</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>11:00</time>
+                <p>opening Ceremony</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>11:15</time>
+                <p>startup pitch round 1</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>12:00</time>
+                <p>Networking launch</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>2:00</time>
+                <p>mentor sessions</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>3:00</time>
+                <p>Investor interaction</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>4:00</time>
+                <p>Closing Remarks</p>
+            </div>
+
+        </div>
+
+        <div class="day-card special">
+
+            <div class="day-top">
+                <span>DAY 2</span>
+                <h3>June 14</h3>
+            </div>
+
+            <div class="schedule-item">
+                <time>10:00</time>
+                <p>Semi Final Presentations</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>11:30</time>
+                <p>Expert Mentorship</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>03:30</time>
+                <p>Lunch and Networking</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>04:30</time>
+                <p>Grand finale</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>6:00</time>
+                <p>Awards Ceremony</p>
+            </div>
+
+            <div class="schedule-item">
+                <time>7:00</time>
+                <p>Closing Celebration</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</section>
+
+<section class="floor-section">
+  <section class="hidden">
+    <div class="floor-header">
+        <span>STARTUP ECOSYSTEM</span>
+        <h2>Innovation Tracks</h2>
+        <p>
+           Choose the category that best represents your startup and compete alongside innovators from across the country.
+        </p>
+    </div>
+
+    <div class="speaker-seat">
+        <div class="speaker-card">
+            <i class="fas fa-landmark"></i>
+            <h3>The Speaker</h3>
+        </div>
+    </div>
+
+    <div class="chamber-grid">
+
+        <div class="party-card government">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <h3>Technology</h3>
+                </div>
+
+                <div class="card-back">
+                    <p>Artificial Intelligence</p>
+                    <p>Cyber security</p>
+                    <p>Cloud Computing</p>
+                    <p>Robotics</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="party-card opposition">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <h3>Innovation</h3>
+                </div>
+
+                <div class="card-back">
+                    <p>HealthTech</p>
+                    <p>EdTech</p>
+                    <p>AgriTech</p>
+                    <p>ClimateTech</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="committee-title">
+        <h3>Special Categories</h3>
+    </div>
+
+    <div class="committee-grid">
+
+        <div class="committee-card">Student Innovation</div>
+        <div class="committee-card">Social impact</div>
+        <div class="committee-card">Future tech</div>
+        <div class="committee-card">Open Innovation</div>
+        <div class="committee-card">Women Entrepreneurship</div>
+
+    </div>
+
+</section>
+</section>
+
+  <section class="hidden">
+<section class="faq-section">
+
+    <div class="faq-heading">
+        <span>NEED HELP?</span>
+        <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="faq-container">
+
+        <div class="faq-card active">
+            <button class="faq-question">
+                <span class="faq-number">01</span>
+                What is Pitch Panchayat?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Pitch Panchayat is a student startup platform where aspiring entrepreneurs present innovative ideas, receive mentorship, connect with investors and compete for recognition and exciting opportunities.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <button class="faq-question">
+                <span class="faq-number">02</span>
+                Who can participate?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                School students, college students, innovators and aspiring entrepreneurs are welcome to participate individually or as a team.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <button class="faq-question">
+                <span class="faq-number">03</span>
+                Do I need prior startup experience?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                No. Whether you are building your first idea or already working on a startup, Pitch Panchayat is open to innovators at every stage.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <button class="faq-question">
+                <span class="faq-number">04</span>
+                Can I participate as a team?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes. You may register individually or as a startup team, depending on the event guidelines.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <button class="faq-question">
+                <span class="faq-number">05</span>
+                How are awards decided?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+               Our judging panel evaluates innovation, feasibility, presentation, scalability, market potential and overall impact.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <button class="faq-question">
+                <span class="faq-number">06</span>
+                How do I register?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Click the "Register Now" button on the homepage, create your account, verify your email and complete the registration form.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</section>
+
+<section class="awards-section">
+  <section class="hidden">
+    <div class="section-title">
+        <span>RECOGNISING EXCELLENCE</span>
+        <h2>Celebrating Tomorrow's Entrepreneurs</h2>
+        <p>Recognising creativity, innovation, execution and entrepreneurial excellence demonstrated throughout Pitch Panchayat.</p>
+    </div>
+
+    <div class="awards-grid">
+
+        <div class="award-card">
+            <div class="award-number">01</div>
+            <div class="award-icon">🏆</div>
+            <h3>Best Startup of the Year</h3>
+            <div class="award-content">
+               Awarded to the startup that demonstrates exceptional innovation, scalability, execution and overall business potential.
+            </div>
+        </div>
+
+        <div class="award-card">
+            <div class="award-number">02</div>
+            <div class="award-icon">🎙️</div>
+            <h3>Most Innovative Idea</h3>
+            <div class="award-content">
+               For the participant presenting the most original, creative and impactful solution.
+            </div>
+        </div>
+
+        <div class="award-card">
+            <div class="award-number">03</div>
+            <div class="award-icon">⚖️</div>
+            <h3>Best Pitch Presentation</h3>
+            <div class="award-content">
+               Recognising outstanding storytelling, communication and presentation skills.
+            </div>
+        </div>
+
+        <div class="award-card">
+            <div class="award-number">04</div>
+            <div class="award-icon">🏛️</div>
+            <h3>Highest Market Potential</h3>
+            <div class="award-content">
+               Highest Market Potential
+            </div>
+        </div>
+
+        <div class="award-card">
+            <div class="award-number">05</div>
+            <div class="award-icon">📜</div>
+            <h3>Best Social Impact</h3>
+            <div class="award-content">
+                Recognising startups creating meaningful solutions for society and sustainable development.
+            </div>
+        </div>
+
+        <div class="award-card">
+            <div class="award-number">06</div>
+            <div class="award-icon">👑</div>
+            <h3>Young Entrepreneur Award</h3>
+            <div class="award-content">
+                Presented to an inspiring student entrepreneur demonstrating leadership, vision and execution.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</section>
+
+<section class="team-section">
+  <section class="hidden">
+    <!-- FOUNDERS -->
+    <div class="section-header">
+        <span>LEADERSHIP</span>
+        <h2>Visionaries Behind The Event</h2>
+    </div>
+
+    <div class="team-grid founders">
+
+        <div class="member-card">
+            <img src="images/founder.jpg" alt="Founder">
+            <div class="overlay">
+                <h3>Founder Name</h3>
+                <p>Founder</p>
+                <span>"Turning ideas into impact."</span>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="images/cofounder.jpg" alt="Co-Founder">
+            <div class="overlay">
+                <h3>Co-Founder Name</h3>
+                <p>Co-Founder</p>
+                <span>"Building opportunities for everyone."</span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- TECHNICAL TEAM -->
+    <div class="section-header">
+        <span>TECHNICAL TEAM</span>
+        <h2>The Digital Architects</h2>
+    </div>
+
+    <div class="tech-container">
+
+        <div class="member-card tech-card">
+            <img src="images/tech.jpg" alt="Technical Lead">
+            <div class="overlay">
+                <h3>Technical Lead</h3>
+                <p>Web & Systems</p>
+                <span>"Code is where ideas become reality."</span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- EVENT CREW -->
+    <div class="section-header">
+        <span>EVENT CREW</span>
+        <h2>The Force Behind Every Moment</h2>
+    </div>
+
+    <div class="team-grid crew">
+
+        <div class="member-card">
+            <img src="images/member1.jpg">
+            <div class="overlay">
+                <h3>Member 1</h3>
+                <span>"Always event-ready."</span>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="images/member2.jpg">
+            <div class="overlay">
+                <h3>Member 2</h3>
+                <span>"Creativity in motion."</span>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="images/member3.jpg">
+            <div class="overlay">
+                <h3>Member 3</h3>
+                <span>"Precision in every detail."</span>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="images/member4.jpg">
+            <div class="overlay">
+                <h3>Member 4</h3>
+                <span>"Making every experience memorable."</span>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="images/member5.jpg">
+            <div class="overlay">
+                <h3>Member 5</h3>
+                <span>"Driven by excellence."</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</section>
+
+
+</section>
+    </section>
+
+    <!-- All your HTML above -->
+
+<script>
+const eventDate = new Date("September 13, 2026 10:00:00").getTime();
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+
+            });
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    document.querySelectorAll(".hidden").forEach((el) => {
+        observer.observe(el);
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const faqCards = document.querySelectorAll(".faq-card");
+
+    faqCards.forEach((card) => {
+
+        const question = card.querySelector(".faq-question");
+
+        question.addEventListener("click", () => {
+
+            const isOpen = card.classList.contains("active");
+
+            // Close all other FAQ boxes
+            faqCards.forEach((otherCard) => {
+                otherCard.classList.remove("active");
+            });
+
+            // Open the clicked one if it was closed
+            if (!isOpen) {
+                card.classList.add("active");
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+  
+
+  
+
+<div id="authOverlay" class="auth-overlay" hidden>
+
+<div class="auth-page">
+
+    <div class="background-blur blur1"></div>
+    <div class="background-blur blur2"></div>
+
+    <div class="auth-wrapper">
+
+        <!-- LEFT SIDE -->
+
+        
+        <button id="closeAuth" class="close-auth">&times;</button>
+
+        <div class="hero-section">
+
+            <div class="hero-logo">
+
+                <img src="assets/logo.png" alt="Pitch Panchayat">
+
+                <h1>Pitch Panchayat</h1>
+
+            </div>
+
+            <h2>
+
+                Where Ideas Become
+                <span>Startups.</span>
+
+            </h2>
+
+            <p>
+
+                India's student startup ecosystem.
+
+                Pitch your innovation, connect with investors,
+                collaborate with founders and build something extraordinary.
+
+            </p>
+
+            <div class="hero-features">
+
+                <div class="feature">
+
+                    🚀 Startup Pitching
+
+                </div>
+
+                <div class="feature">
+
+                    💰 Investor Network
+
+                </div>
+
+                <div class="feature">
+
+                    🌎 National Community
+
+                </div>
+
+                <div class="feature">
+
+                    🏆 Competitions & Funding
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+
+        <div class="login-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    Welcome 👋
+
+                </h2>
+
+                <p>
+
+                    Continue your startup journey.
+
+                </p>
+
+            </div>
+
+        <form id="signupForm">
+
+    <div class="input-group">
+
+        <label>Email Address</label>
+
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Confirm Password</label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            required
+        >
+
+    </div>
+
+    <button
+        type="submit"
+        class="primary-btn signup-btn">
+
+        Create Account
+
+    </button>
+
+</form>
+
+<p class="switch-auth">
+
+    Already have an account?
+
+    <span id="showLogin">
+
+        Login
+
+    </span>
+
+</p>
+
+<!-- LOGIN -->
+
+<form id="loginForm" class="auth-form-hidden">
+
+    <div class="input-group">
+
+        <label>Email Address</label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+        >
+
+    </div>
+
+    <button
+        type="submit"
+        class="primary-btn login-btn">
+
+        Login
+
+    </button>
+
+    <p
+        id="forgotPassword"
+        class="forgot-link">
+
+        Forgot Password?
+
+    </p>
+
+    <p class="switch-auth">
+
+        Don't have an account?
+
+        <span id="showSignup">
+
+            Create One
+
+        </span>
+
+    </p>
+
+    <button type="button" id="googleSignIn" class="google-btn">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+    Continue with Google
+</button>
+
+ <script type="module" src="auth.js"></script>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<section class="testimonial-section">
+
+<div class="section-title">
+
+<span>
+
+SUCCESS STORIES
+
+</span>
+
+<h2>
+
+What People Say
+
+</h2>
+
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+★★★★★
+
+<p>
+
+Pitch Panchayat creates an incredible environment where young innovators gain confidence and valuable industry exposure.
+
+</p>
+
+<h4>
+
+Startup Mentor
+
+</h4>
+
+</div>
+
+<div class="testimonial-card">
+
+★★★★★
+
+<p>
+
+The networking opportunities and mentorship sessions were invaluable. I met founders who inspired my entrepreneurial journey.
+
+</p>
+
+<h4>
+
+Student Founder
+
+</h4>
+
+</div>
+
+<div class="testimonial-card">
+
+★★★★★
+
+<p>
+
+One of the most professionally organised student startup events I've attended.
+
+</p>
+
+<h4>
+
+Investor
+
+</h4>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="newsletter">
+
+<h2>
+
+Stay Updated
+
+</h2>
+
+<p>
+
+Receive announcements, event updates and startup opportunities directly in your inbox.
+
+</p>
+
+<form>
+
+<input
+
+type="email"
+
+placeholder="Enter your email"
+
+>
+
+<button>
+
+Subscribe
+
+</button>
+
+</form>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-grid">
+
+<div>
+
+<h2>
+
+Pitch Panchayat
+
+</h2>
+
+<p>
+
+India's Student Startup Platform empowering the next generation of entrepreneurs through innovation, mentorship and opportunity.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+Quick Links
+
+</h3>
+
+<a href="#about">
+
+About
+
+</a>
+
+<a href="#timeline">
+
+Journey
+
+</a>
+
+<a href="#awards">
+
+Awards
+
+</a>
+
+<a href="#team">
+
+Team
+
+</a>
+
+<a href="#contact">
+
+Contact
+
+</a>
+
+</div>
+
+<div>
+
+<h3>
+
+Resources
+
+</h3>
+
+<a>
+
+Register
+
+</a>
+
+<a>
+
+Brochure
+
+</a>
+
+<a>
+
+FAQ
+
+</a>
+
+<a>
+
+Privacy Policy
+
+</a>
+
+<a>
+
+Terms & Conditions
+
+</a>
+
+</div>
+
+<div>
+
+<h3>
+
+Connect
+
+</h3>
+
+<p>
+
+📧 support@pitchpanchayat.in
+
+</p>
+
+<p>
+
+📍 Hubballi, Karnataka
+
+</p>
+
+<p>
+
+🌐 www.pitchpanchayat.in
+
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026 Pitch Panchayat.
+
+All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+
+   

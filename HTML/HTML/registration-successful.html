@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Registration Successful | Pitch Panchayat</title>
+
+<link rel="stylesheet" href="source/style_main_web.css">
+
+<style>
+
+body{
+
+margin:0;
+
+padding:0;
+
+font-family:Arial,sans-serif;
+
+background:#0d0d0d;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+color:white;
+
+}
+
+.success-card{
+
+width:500px;
+
+max-width:90%;
+
+background:#171717;
+
+border:1px solid rgba(255,204,0,.25);
+
+border-radius:20px;
+
+padding:40px;
+
+text-align:center;
+
+box-shadow:0 0 40px rgba(255,204,0,.18);
+
+}
+
+.success-card h1{
+
+color:#FFC72C;
+
+margin-bottom:15px;
+
+}
+
+.success-card p{
+
+color:#d5d5d5;
+
+line-height:1.7;
+
+}
+
+.registration-id{
+
+margin:25px 0;
+
+padding:15px;
+
+background:#222;
+
+border-radius:10px;
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#FFC72C;
+
+}
+
+.home-btn{
+
+display:inline-block;
+
+margin-top:25px;
+
+padding:14px 28px;
+
+background:#FFC72C;
+
+color:#111;
+
+text-decoration:none;
+
+font-weight:bold;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.home-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+#qrcode{
+
+margin-top:30px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+#qrcode{
+
+    background: white;
+
+    padding: 20px;
+
+    display: inline-block;
+
+    border-radius: 10px;
+
+    margin-top: 25px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="success-card">
+
+<h1>🎉 Registration Successful!</h1>
+
+<p>
+
+Thank you for registering for <strong>Pitch Panchayat</strong>.
+
+Your registration has been received successfully.
+
+</p>
+
+<div class="registration-id">
+
+Registration ID:
+
+<br><br>
+
+<strong id="registrationId">
+
+PP-XXXXXXXX
+
+</strong>
+
+</div>
+
+<div class="registration-id">
+
+    <h3>Your Registration ID</h3>
+
+    <p id="registrationId">Loading...</p>
+
+</div>
+
+<div id="qrcode"></div>
+
+<p>
+
+A confirmation email will be sent to your registered email address.
+
+Please keep your Registration ID safe.
+
+</p>
+
+<a href="main_site.html" class="home-btn">
+
+Back to Home
+
+</a>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+const registrationId = localStorage.getItem("registrationId");
+
+if (registrationId) {
+
+    document.getElementById("registrationId").innerText = registrationId;
+
+    new QRCode(document.getElementById("qrcode"), {
+
+        text: JSON.stringify({
+
+            registrationId: registrationId,
+
+            event: "Pitch Panchayat 2026"
+
+        }),
+
+        width: 220,
+
+        height: 220
+
+    });
+
+//     new QRCode(document.getElementById("qrcode"), {
+//     text: "HELLO",
+//     width: 300,
+//     height: 300,
+//     correctLevel: QRCode.CorrectLevel.H
+// });
+
+}
+
+</script>
+
+</body>
+
+</html>

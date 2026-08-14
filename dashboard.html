@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pitch Panchayat Admin Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script type="module" src="dashboard.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h1>Pitch Panchayat</h1>
+            <span>Administrative Portal</span>
+
+        </div>
+
+        <nav>
+
+            <a href="#" id="navDashboard" class="active">
+                📊 Dashboard
+            </a>
+
+            <a href="#" id="navParticipants">
+                👥 Participants
+            </a>
+
+            <a href="#" id="navStartups">
+                🚀 Startups
+            </a>
+
+            <a href="#" id="navOrganizations">
+                🏫 Organizations
+            </a>
+
+            <a href="#" id="navSettings">
+                ⚙ Settings
+            </a>
+
+            <a href="#" id="navLogout">
+                🚪 Logout
+            </a>
+
+               <button onclick="window.location.href='checkin.html'">
+    📷 Open Check-In Terminal
+</button>
+
+        </nav>  
+
+     
+
+<div id="reader" style="width:400px; display:none;"></div>
+
+<div id="participantInfo"></div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <header>
+
+            <div>
+
+                <div class="header-left">
+
+<h2 id="adminName">
+
+Loading...
+
+</h2>
+
+<p id="adminRole">
+
+Administrator
+
+</p>
+
+</div>
+            </div>
+
+            <button id="exportBtn">
+                Export Excel
+            </button>
+
+        </header>
+
+
+        <!-- Statistics -->
+         <section id="dashboardSection">
+
+        <section class="stats">
+
+            <div class="card">
+
+                <h3>Total Registrations</h3>
+
+                <span id="totalRegistrations">
+                    0
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Organizations</h3>
+
+                <span id="organizationCount">
+                    0
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Startups</h3>
+
+                <span id="startupCount">
+                    0
+                </span>
+
+            </div>
+
+            <div class="card">
+
+    <h3>Checked In</h3>
+
+    <span id="checkedIn">
+        0
+    </span>
+
+</div>
+
+<div class="card">
+
+    <h3>Pending</h3>
+
+    <span id="pending">
+        0
+    </span>
+
+</div>
+
+        </section>
+        </section>
+
+
+        <!-- Search -->
+         <section id="ParticipantsSection">
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name, organization or startup..."
+            >
+
+        </section>
+        </section>
+
+
+        <!-- Registration Table -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Mobile</th>
+
+                        <th>Organization</th>
+
+                        <th>Team name</th>
+
+                        <th>Age group</th>
+
+                        <th>Description</th>
+
+                        <th>Category</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="registrationTable">
+
+                    <!-- Firebase data will appear here -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <!-- Details Popup -->
+
+    <div id="popup" class="popup hidden">
+
+        <div class="popup-content">
+
+            <button id="closePopup">
+
+                ✕
+
+            </button>
+
+            <h2>
+
+                Startup Description
+
+            </h2>
+
+            <p id="popupDescription">
+
+            </p>
+
+        </div>
+
+    </div>
+    <p id="lastUpdated">Last Updated: --</p>
+    
+<script type="module" src="scanner.js"></script>
+<script type="module" src="admin-protect.js"></script>
+<script type="module" src="admin-profile.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+</body>
+
+</html>

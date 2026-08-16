@@ -1549,7 +1549,7 @@ select{
   -webkit-backdrop-filter: blur(18px);
   display: grid;
   place-items: center;
-  padding: 18px;
+  padding: 48px;
 }
 
 .auth-page{
@@ -1609,7 +1609,7 @@ select{
 
 .hero-section{
   border-radius: 28px;
-  padding: 34px;
+  padding: 108px 24px;
   background:
     radial-gradient(circle at top, rgba(214,181,111,0.10), transparent 26%),
     linear-gradient(180deg, rgba(8,16,28,0.98), rgba(11,22,39,0.98));
@@ -1669,7 +1669,7 @@ select{
 
 .login-card{
   border-radius: 28px;
-  padding: 28px;
+  padding: 70px 28px;
   background: rgba(255,255,255,0.94);
   color: #101623;
   box-shadow: 0 24px 60px rgba(0,0,0,0.26);

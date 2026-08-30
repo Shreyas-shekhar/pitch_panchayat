@@ -127,7 +127,7 @@ select{
 --------------------------------------------------------- */
 
 .parliament-nav{
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -136,13 +136,12 @@ select{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  padding: 14px 7%;
+  padding: 0px 7%;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   background: linear-gradient(180deg, rgba(7,17,31,0.92), rgba(7,17,31,0.68));
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.18);
 }
 
 .nav-logo{
@@ -289,7 +288,7 @@ select{
    Video Background
 --------------------------------------------------------- */
 
-.hero video{
+/* .hero video{
   position: absolute;
   inset: 0;
 
@@ -306,8 +305,88 @@ select{
           brightness(0.72);
 
   transform: scale(1);
+} */
+
+/* =========================================
+   HERO VIDEO — WIDE TOP BANNER
+   ========================================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    /* Space below navbar */
+    padding-top: 90px;
 }
 
+
+/* Video banner */
+.hero video {
+    position: absolute;
+
+    /* Start below navbar */
+    top: 90px;
+    left: 0;
+
+    width: 100%;
+    height: 25vh;
+
+    object-fit: contain;
+    object-position: center;
+
+    z-index: 0;
+
+    /* Keep your existing grading */
+    filter:
+        saturate(1.08)
+        contrast(1.04)
+        brightness(0.72);
+
+    opacity: 0.95;
+}
+
+
+/* =========================================
+   HERO CONTENT
+   ========================================= */
+
+.hero > *:not(video) {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Put the text immediately after the video */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 25vh;
+    padding-top: 25px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top: 75px;
+    }
+
+    .hero video {
+        top: 75px;
+        height: 25vh;
+    }
+
+    .hero-content {
+        margin-top: 25vh;
+        padding-top: 20px;
+    }
+}
 
 /* ---------------------------------------------------------
    Dark overlay
@@ -2088,4 +2167,64 @@ textarea {
 
 .auth-form-hidden {
     display: none !important;
+}
+
+.hero {
+    position: relative;
+    background: #02060f;
+    overflow: hidden;
+}
+
+
+/* VIDEO STRIP */
+.hero video {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 26vh;
+
+    min-height: 180px;
+    max-height: 300px;
+
+    object-fit: cover;
+    object-position: center center;
+
+    margin: 0;
+    padding: 0;
+
+    z-index: 0;
+
+    filter:
+        saturate(1.08)
+        contrast(1.04)
+        brightness(0.72);
+}
+
+
+/* HERO CONTENT COMES DIRECTLY AFTER VIDEO */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(1200px, 92%);
+    margin: 0 auto;
+
+    padding: 40px 0 70px;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .hero video {
+        height: 22vh;
+        min-height: 150px;
+        max-height: 220px;
+    }
+
+    .hero-content {
+        padding: 30px 0 50px;
+    }
 }

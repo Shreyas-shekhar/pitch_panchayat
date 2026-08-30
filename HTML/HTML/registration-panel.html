@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <section class="logo-section">
+    <!-- <section class="logo-section">
         <h2>OUR LOGO</h2>
-    </section>
+    </section> -->
 
     <section class="register-section">
 
@@ -63,13 +63,7 @@
                     <option>23+ Years</option>
              </select>
 
-            <input type="text"
-                   placeholder="Startup / Team Name"
-                   id="startup"
-                   required>
-                   
-
-            <select id="category" required>
+              <select id="category" required>
                 <option value="">
                     Select Category
                 </option>
@@ -101,9 +95,165 @@
             
       
 
-            <button type="submit">
+           
+
+    <p class="team-subtitle">
+        Enter your team information and details of all participants.
+    </p>
+
+    <!-- Team Name -->
+    <div class="form-group">
+        <input
+            type="text"
+            id="teamName"
+            name="teamName"
+            placeholder="Enter your team name"
+            required
+        >
+    </div>
+
+    <!-- Participant 1 -->
+    <div class="participant-card">
+        <h4>Participant 1</h4>
+
+        <div class="form-group">
+            <input
+                type="text"
+                id="participant1Name"
+                name="participant1Name"
+                placeholder="Enter full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <input
+                type="tel"
+                id="participant1Phone"
+                name="participant1Phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+        </div>
+    </div>
+
+    <!-- Participant 2 -->
+    <div class="participant-card">
+        <h4>Participant 2</h4>
+
+        <div class="form-group">
+            <input
+                type="text"
+                id="participant2Name"
+                name="participant2Name"
+                placeholder="Enter full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <input
+                type="tel"
+                id="participant2Phone"
+                name="participant2Phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+        </div>
+    </div>
+
+    <!-- Participant 3 -->
+    <div class="participant-card">
+        <h4>Participant 3</h4>
+
+        <div class="form-group">
+            <input
+                type="text"
+                id="participant3Name"
+                name="participant3Name"
+                placeholder="Enter full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <input
+                type="tel"
+                id="participant3Phone"
+                name="participant3Phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+        </div>
+    </div>
+
+    <!-- Participant 4 -->
+    <div class="participant-card">
+        <h4>Participant 4</h4>
+
+        <div class="form-group">
+            <input
+                type="text"
+                id="participant4Name"
+                name="participant4Name"
+                placeholder="Enter full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <input
+                type="tel"
+                id="participant4Phone"
+                name="participant4Phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+        </div>
+    </div>
+
+    <!-- Participant 5 -->
+    <div class="participant-card">
+        <h4>Participant 5</h4>
+
+        <div class="form-group">
+            <input
+                type="text"
+                id="participant5Name"
+                name="participant5Name"
+                placeholder="Enter full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <input
+                type="tel"
+                id="participant5Phone"
+                name="participant5Phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+            <!-- <input type="text"
+                   placeholder="Startup / Team Name"
+                   id="startup"
+                   required> -->
+                   
+ <button type="submit">
                 Register Now →
             </button>
+           
 
         </form>
 

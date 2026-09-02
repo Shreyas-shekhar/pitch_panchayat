@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ | Pitch Panchayat 2026</title>
+
+    <link rel="icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Manrope", sans-serif;
+            background: #0d0d0d;
+            color: #f5f0df;
+            min-height: 100vh;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
+
+        .navbar {
+            width: 100%;
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            background: #0d0d0d;
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.1);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 58px;
+            height: 58px;
+
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            color: rgba(245, 240, 223, 0.75);
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e7b93c;
+        }
+
+        .nav-links a.active {
+            color: #e7b93c;
+        }
+
+        .nav-register {
+            padding: 11px 20px;
+
+            background: #e7b93c;
+
+            color: #0d0d0d !important;
+
+            border-radius: 4px;
+        }
+
+        .nav-register:hover {
+            background: #f2ca58;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .faq-hero {
+            min-height: 420px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 90px 20px 80px;
+
+            position: relative;
+            overflow: hidden;
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.08);
+        }
+
+        .faq-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background: rgba(231, 185, 60, 0.06);
+
+            filter: blur(80px);
+
+            top: -250px;
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            margin-bottom: 24px;
+
+            border: 1px solid rgba(231, 185, 60, 0.45);
+
+            border-radius: 50px;
+
+            color: #e7b93c;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(50px, 8vw, 90px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            font-weight: 800;
+
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            color: #e7b93c;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: rgba(245, 240, 223, 0.62);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           FAQ CONTENT
+           ===================================================== */
+
+        .faq-section {
+            padding: 90px 6% 120px;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-intro h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 36px;
+
+            margin-bottom: 12px;
+        }
+
+        .faq-intro p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FAQ ITEM
+           ===================================================== */
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(245, 240, 223, 0.12);
+
+            background: rgba(255, 255, 255, 0.025);
+
+            transition:
+                border-color 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(231, 185, 60, 0.35);
+        }
+
+        .faq-item.active {
+            border-color: rgba(231, 185, 60, 0.55);
+
+            background: rgba(231, 185, 60, 0.035);
+        }
+
+
+        /* QUESTION */
+
+        .faq-question {
+            width: 100%;
+
+            padding: 25px 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #f5f0df;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .faq-question span:first-child {
+            flex: 1;
+        }
+
+
+        /* PLUS ICON */
+
+        .faq-icon {
+            width: 34px;
+            height: 34px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(231, 185, 60, 0.5);
+
+            border-radius: 50%;
+
+            color: #e7b93c;
+
+            font-size: 22px;
+            font-weight: 400;
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+
+            background: #e7b93c;
+
+            color: #0d0d0d;
+        }
+
+
+        /* ANSWER */
+
+        .faq-answer {
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            transition: grid-template-rows 0.4s ease;
+        }
+
+        .faq-answer-inner {
+            overflow: hidden;
+        }
+
+        .faq-answer p {
+            padding: 0 28px 0;
+
+            color: rgba(245, 240, 223, 0.62);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            transform: translateY(-8px);
+
+            opacity: 0;
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-item.active .faq-answer p {
+            padding-bottom: 28px;
+
+            transform: translateY(0);
+
+            opacity: 1;
+        }
+
+
+        /* =====================================================
+           CONTACT CTA
+           ===================================================== */
+
+        .faq-contact {
+            margin-top: 70px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            border: 1px solid rgba(231, 185, 60, 0.25);
+
+            background: rgba(231, 185, 60, 0.035);
+        }
+
+        .faq-contact h3 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .faq-contact p {
+            color: rgba(245, 240, 223, 0.58);
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .contact-button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #e7b93c;
+
+            color: #0d0d0d;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            border-radius: 3px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+
+            background: #f2ca58;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+            padding: 35px 6%;
+
+            border-top: 1px solid rgba(245, 240, 223, 0.1);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        footer p {
+            color: rgba(245, 240, 223, 0.4);
+
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 240, 223, 0.5);
+
+            text-decoration: none;
+
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #e7b93c;
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                height: 70px;
+
+                padding: 0 5%;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .faq-hero {
+                min-height: 350px;
+
+                padding: 70px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 54px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .faq-section {
+                padding: 65px 5% 80px;
+            }
+
+            .faq-question {
+                padding: 20px;
+
+                font-size: 14px;
+            }
+
+            .faq-answer p {
+                padding-left: 20px;
+                padding-right: 20px;
+
+                font-size: 13px;
+            }
+
+            .faq-item.active .faq-answer p {
+                padding-bottom: 22px;
+            }
+
+            .faq-contact {
+                padding: 35px 20px;
+            }
+
+            .faq-contact h3 {
+                font-size: 25px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <a href="main_site.html" class="logo-link">
+            <img src="logo.png" alt="Pitch Panchayat" class="logo">
+        </a>
+
+        <div class="nav-links">
+
+            <a href="main_site.html#about">
+                About
+            </a>
+
+            <a href="main_site.html#timeline">
+                Timeline
+            </a>
+
+            <a href="main_site.html#schedule">
+                Schedule
+            </a>
+
+            <a href="main_site.html#awards">
+                Awards
+            </a>
+
+            <a href="main_site.html#contact">
+                Contact
+            </a>
+
+            <a href="registration-panel.html" class="nav-register">
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <header class="faq-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                PITCH PANCHAYAT 2026
+            </span>
+
+            <h1>
+                Frequently<br>
+                <span>Asked.</span>
+            </h1>
+
+            <p>
+                Everything you need to know about Pitch Panchayat,
+                participation, teams, registration, judging and the event.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         FAQ
+         ===================================================== -->
+
+    <main class="faq-section">
+
+        <div class="faq-container">
+
+
+            <div class="faq-intro">
+
+                <h2>Questions & Answers</h2>
+
+                <p>
+                    Click on a question to reveal the answer.
+                </p>
+
+            </div>
+
+
+
+            <div class="faq-list">
+
+
+                <!-- FAQ 1 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What is Pitch Panchayat?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Pitch Panchayat is an entrepreneurship and
+                                innovation platform where participants get
+                                an opportunity to present their ideas,
+                                solutions and ventures to a panel of judges
+                                and industry professionals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 2 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Who can participate in Pitch Panchayat?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Students, aspiring entrepreneurs, innovators
+                                and other eligible participants can
+                                participate, subject to the eligibility
+                                requirements of the event.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 3 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can I participate individually?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Yes. Individual participation may be allowed
+                                depending on the applicable registration
+                                requirements. Participants can also
+                                participate as part of a team.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 4 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How many members can be in a team?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                A team can consist of up to 5 participants.
+                                The required details of every team member
+                                must be submitted during registration.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 5 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What kind of ideas can I present?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Participants can present innovative ideas,
+                                startup concepts, products, services or
+                                solutions that address meaningful
+                                real-world problems.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 6 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Do I need to have an existing startup?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Not necessarily. Depending on the event
+                                requirements, participants may be able to
+                                present an early-stage idea or concept
+                                without having an already registered startup.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 7 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How will the ideas be judged?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Ideas may be evaluated on factors such as
+                                innovation, understanding of the problem,
+                                feasibility, scalability, impact, business
+                                potential and the overall quality of the pitch.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 8 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Will I have to pitch in front of judges?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Selected participants or teams may be required
+                                to present their idea to a judging panel as
+                                part of the event.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 9 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Are there prizes for the winners?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Yes. Eligible winners may receive prizes,
+                                recognition and other opportunities associated
+                                with Pitch Panchayat. Official prize details
+                                will be communicated through the event's
+                                official channels.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 10 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Is there a registration fee?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Please refer to the official registration
+                                page for the current registration requirements
+                                and applicable fee information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 11 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What happens after I register?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Once your registration has been submitted,
+                                your information will be processed according
+                                to the event procedure. Important updates,
+                                selection information and further instructions
+                                will be communicated using the contact details
+                                provided during registration.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 12 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can I edit my registration after submitting it?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                If you need to correct or update information
+                                after submitting your registration, contact
+                                the Pitch Panchayat team as soon as possible.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 13 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can minors participate?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                Participation by minors may be subject to
+                                additional eligibility requirements,
+                                permissions or consent. Please review the
+                                applicable event terms before registering.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAQ 14 -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How can I contact the Pitch Panchayat team?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <div class="faq-answer-inner">
+
+                            <p>
+                                For questions, registration support or other
+                                enquiries, contact us at
+                                <a href="mailto:support@pitchpanchayat.in"
+                                   style="color:#e7b93c;text-decoration:none;">
+                                    support@pitchpanchayat.in
+                                </a>.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTACT BOX
+                 ================================================= -->
+
+            <div class="faq-contact">
+
+                <h3>
+                    Still have questions?
+                </h3>
+
+                <p>
+                    Our team will be happy to help you.
+                </p>
+
+                <a
+                    href="mailto:support@pitchpanchayat.in"
+                    class="contact-button"
+                >
+                    Contact Us
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Pitch Panchayat. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="terms-and-conditions.html">
+                Terms & Conditions
+            </a>
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="main_site.html">
+                Back to Website
+            </a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+        const faqQuestions =
+            document.querySelectorAll(".faq-question");
+
+
+        faqQuestions.forEach(question => {
+
+            question.addEventListener("click", () => {
+
+                const currentItem =
+                    question.closest(".faq-item");
+
+
+                /*
+                 * Close all other FAQ items
+                 */
+
+                document
+                    .querySelectorAll(".faq-item")
+                    .forEach(item => {
+
+                        if (item !== currentItem) {
+
+                            item.classList.remove("active");
+
+                        }
+
+                    });
+
+
+                /*
+                 * Toggle current item
+                 */
+
+                currentItem.classList.toggle("active");
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>

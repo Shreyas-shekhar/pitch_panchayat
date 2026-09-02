@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Development Team | Pitch Panchayat 2026</title>
+
+    <link rel="icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #f5f0df;
+            font-family: "Manrope", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            height: 82px;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(13, 13, 13, 0.94);
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.1);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(245, 240, 223, 0.68);
+
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e7b93c;
+        }
+
+        .nav-register {
+            padding: 11px 20px;
+
+            background: #e7b93c;
+            color: #0d0d0d !important;
+
+            border-radius: 4px;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 470px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.08);
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            top: -350px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: rgba(231, 185, 60, 0.07);
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid rgba(231, 185, 60, 0.45);
+
+            border-radius: 50px;
+
+            color: #e7b93c;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(50px, 8vw, 92px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #e7b93c;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: rgba(245, 240, 223, 0.6);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           DEVELOPER SECTION
+        ===================================================== */
+
+        .developers {
+            padding: 110px 6% 130px;
+        }
+
+        .developers-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 70px;
+        }
+
+        .section-heading h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(35px, 5vw, 55px);
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 span {
+            color: #e7b93c;
+        }
+
+        .section-heading p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           DEVELOPER GRID
+        ===================================================== */
+
+        .developer-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           DEVELOPER CARD
+        ===================================================== */
+
+        .developer-card {
+            position: relative;
+
+            padding: 35px 30px;
+
+            min-height: 390px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.015)
+                );
+
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(231, 185, 60, 0.55);
+        }
+
+
+        /* Decorative number */
+
+        .developer-number {
+            position: absolute;
+
+            top: 20px;
+            right: 25px;
+
+            font-family: "Syne", sans-serif;
+
+            font-size: 55px;
+
+            color: rgba(231, 185, 60, 0.08);
+
+            font-weight: 800;
+        }
+
+
+        /* Developer image placeholder */
+
+        .developer-photo {
+            position: absolute;
+
+            top: 30px;
+            left: 30px;
+
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+
+            border: 2px solid rgba(231, 185, 60, 0.45);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #171717;
+
+            color: rgba(245, 240, 223, 0.35);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+        .developer-photo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* Developer information */
+
+        .developer-info {
+            position: relative;
+            z-index: 2;
+        }
+
+        .developer-role {
+            display: inline-block;
+
+            margin-bottom: 10px;
+
+            color: #e7b93c;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+        .developer-name {
+            font-family: "Syne", sans-serif;
+
+            font-size: 27px;
+
+            margin-bottom: 12px;
+        }
+
+        .developer-description {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 18px;
+        }
+
+        .skill {
+            padding: 6px 10px;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 10px;
+
+            border-radius: 3px;
+        }
+
+
+        /* =====================================================
+           DEVELOPMENT INFO
+        ===================================================== */
+
+        .development-info {
+            margin-top: 90px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .info-box {
+            padding: 40px;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            background: rgba(255,255,255,0.02);
+        }
+
+        .info-box h3 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .info-box h3 span {
+            color: #e7b93c;
+        }
+
+        .info-box p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           TECH STACK
+        ===================================================== */
+
+        .tech-stack {
+            margin-top: 90px;
+
+            text-align: center;
+        }
+
+        .tech-stack h3 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 30px;
+
+            margin-bottom: 30px;
+        }
+
+        .tech-list {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .tech {
+            padding: 13px 20px;
+
+            border: 1px solid rgba(231, 185, 60, 0.25);
+
+            background: rgba(231, 185, 60, 0.035);
+
+            color: rgba(245, 240, 223, 0.7);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .tech:hover {
+            transform: translateY(-3px);
+
+            border-color: #e7b93c;
+
+            color: #e7b93c;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            max-width: 1150px;
+
+            margin: 0 auto 100px;
+
+            padding: 70px 30px;
+
+            text-align: center;
+
+            border: 1px solid rgba(231, 185, 60, 0.25);
+
+            background: rgba(231, 185, 60, 0.035);
+        }
+
+        .cta h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(32px, 5vw, 50px);
+
+            margin-bottom: 15px;
+        }
+
+        .cta h2 span {
+            color: #e7b93c;
+        }
+
+        .cta p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 14px;
+
+            margin-bottom: 28px;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #e7b93c;
+
+            color: #0d0d0d;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            border-radius: 3px;
+
+            transition: transform 0.25s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 35px 6%;
+
+            border-top: 1px solid rgba(245, 240, 223, 0.1);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        footer p {
+            color: rgba(245, 240, 223, 0.4);
+
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 240, 223, 0.5);
+
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #e7b93c;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .developer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .development-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: 70px;
+                padding: 0 5%;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero {
+                min-height: 390px;
+                padding: 75px 20px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .developers {
+                padding: 75px 5% 90px;
+            }
+
+            .developer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .developer-card {
+                min-height: 360px;
+            }
+
+            .development-info {
+                margin-top: 65px;
+            }
+
+            .info-box {
+                padding: 30px 25px;
+            }
+
+            .tech-stack {
+                margin-top: 65px;
+            }
+
+            .cta {
+                margin: 0 5% 70px;
+                padding: 55px 20px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 18px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <a href="main_site.html">
+            <img src="logo.png"
+                 alt="Pitch Panchayat"
+                 class="logo">
+        </a>
+
+        <div class="nav-links">
+
+            <a href="main_site.html#about">
+                About
+            </a>
+
+            <a href="main_site.html#timeline">
+                Timeline
+            </a>
+
+            <a href="main_site.html#schedule">
+                Schedule
+            </a>
+
+            <a href="main_site.html#awards">
+                Awards
+            </a>
+
+            <a href="main_site.html#contact">
+                Contact
+            </a>
+
+            <a href="registration-panel.html"
+               class="nav-register">
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                PITCH PANCHAYAT 2026
+            </span>
+
+            <h1>
+                The <span>Developers.</span>
+            </h1>
+
+            <p>
+                Meet the people behind the digital experience of
+                Pitch Panchayat — designing, developing and bringing
+                the platform to life.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         DEVELOPERS
+    ===================================================== -->
+
+    <section class="developers">
+
+        <div class="developers-container">
+
+
+            <div class="section-heading">
+
+                <h2>
+                    Built <span>Behind the Scenes.</span>
+                </h2>
+
+                <p>
+                    From interface design to development and deployment,
+                    this team is responsible for building and maintaining
+                    the digital platform of Pitch Panchayat.
+                </p>
+
+            </div>
+
+
+
+            <div class="developer-grid">
+
+
+                <!-- =================================================
+                     DEVELOPER 01
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        01
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            Lead Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 1
+                        </h3>
+
+                        <p class="developer-description">
+                            Responsible for the overall development,
+                            architecture and technical direction of
+                            the Pitch Panchayat website.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                Frontend
+                            </span>
+
+                            <span class="skill">
+                                Backend
+                            </span>
+
+                            <span class="skill">
+                                Architecture
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DEVELOPER 02
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        02
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            UI / UX Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 2
+                        </h3>
+
+                        <p class="developer-description">
+                            Focuses on interface design, user experience,
+                            visual consistency and responsive layouts
+                            across the platform.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                UI Design
+                            </span>
+
+                            <span class="skill">
+                                UX
+                            </span>
+
+                            <span class="skill">
+                                CSS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DEVELOPER 03
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        03
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            Full Stack Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 3
+                        </h3>
+
+                        <p class="developer-description">
+                            Works across the frontend and backend systems,
+                            connecting the website with the required
+                            services and functionality.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                JavaScript
+                            </span>
+
+                            <span class="skill">
+                                Node.js
+                            </span>
+
+                            <span class="skill">
+                                Firebase
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DEVELOPER 04
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        04
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            Frontend Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 4
+                        </h3>
+
+                        <p class="developer-description">
+                            Builds interactive website components and
+                            ensures that the platform works smoothly
+                            across different screen sizes.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                HTML
+                            </span>
+
+                            <span class="skill">
+                                CSS
+                            </span>
+
+                            <span class="skill">
+                                JavaScript
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DEVELOPER 05
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        05
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            Backend Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 5
+                        </h3>
+
+                        <p class="developer-description">
+                            Handles server-side functionality, data
+                            management, authentication and backend
+                            integrations.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                Node.js
+                            </span>
+
+                            <span class="skill">
+                                Express
+                            </span>
+
+                            <span class="skill">
+                                Firebase
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DEVELOPER 06
+                ================================================= -->
+
+                <article class="developer-card">
+
+                    <span class="developer-number">
+                        06
+                    </span>
+
+                    <div class="developer-photo">
+                        PHOTO
+                    </div>
+
+                    <div class="developer-info">
+
+                        <span class="developer-role">
+                            Developer
+                        </span>
+
+                        <h3 class="developer-name">
+                            Name 6
+                        </h3>
+
+                        <p class="developer-description">
+                            Contributes to development, testing,
+                            improvements and technical maintenance
+                            of the platform.
+                        </p>
+
+                        <div class="skills">
+
+                            <span class="skill">
+                                Development
+                            </span>
+
+                            <span class="skill">
+                                Testing
+                            </span>
+
+                            <span class="skill">
+                                Optimization
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DEVELOPMENT INFORMATION
+            ================================================= -->
+
+            <div class="development-info">
+
+                <div class="info-box">
+
+                    <h3>
+                        What We <span>Build.</span>
+                    </h3>
+
+                    <p>
+                        The development team works on the digital
+                        infrastructure that powers Pitch Panchayat,
+                        from the public-facing website and registration
+                        experience to backend services and administrative
+                        functionality.
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        Our <span>Approach.</span>
+                    </h3>
+
+                    <p>
+                        We focus on creating a platform that is simple
+                        to use, visually distinctive, responsive across
+                        devices and reliable throughout the event
+                        lifecycle.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TECHNOLOGY
+            ================================================= -->
+
+            <div class="tech-stack">
+
+                <h3>
+                    Technology Behind the Platform
+                </h3>
+
+                <div class="tech-list">
+
+                    <span class="tech">
+                        HTML5
+                    </span>
+
+                    <span class="tech">
+                        CSS3
+                    </span>
+
+                    <span class="tech">
+                        JavaScript
+                    </span>
+
+                    <span class="tech">
+                        Node.js
+                    </span>
+
+                    <span class="tech">
+                        Express.js
+                    </span>
+
+                    <span class="tech">
+                        Firebase
+                    </span>
+
+                    <span class="tech">
+                        Firestore
+                    </span>
+
+                    <span class="tech">
+                        GitHub
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+    ===================================================== -->
+
+    <section class="cta">
+
+        <h2>
+            Have an idea?
+            <span>Let's build.</span>
+        </h2>
+
+        <p>
+            Explore Pitch Panchayat and be part of the journey.
+        </p>
+
+        <a href="main_site.html"
+           class="cta-button">
+            Explore Pitch Panchayat
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Pitch Panchayat. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="terms-and-conditions.html">
+                Terms & Conditions
+            </a>
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="main_site.html">
+                Back to Website
+            </a>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

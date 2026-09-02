@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Pitch Panchayat 2026</title>
+
+    <link rel="icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #f5f0df;
+            font-family: "Manrope", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(13, 13, 13, 0.94);
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.1);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(245, 240, 223, 0.68);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e7b93c;
+        }
+
+        .nav-links .active {
+            color: #e7b93c;
+        }
+
+        .nav-register {
+            padding: 11px 20px;
+
+            background: #e7b93c;
+
+            color: #0d0d0d !important;
+
+            border-radius: 4px;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 420px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 90px 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            border-bottom: 1px solid rgba(245, 240, 223, 0.08);
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            top: -350px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+
+            background: rgba(231, 185, 60, 0.07);
+
+            filter: blur(100px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            margin-bottom: 24px;
+
+            border: 1px solid rgba(231, 185, 60, 0.45);
+
+            border-radius: 50px;
+
+            color: #e7b93c;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(52px, 8vw, 90px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #e7b93c;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: rgba(245, 240, 223, 0.6);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           CONTACT SECTION
+        ===================================================== */
+
+        .contact-section {
+            padding: 100px 6% 120px;
+        }
+
+        .contact-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 25px;
+        }
+
+        /* =====================================================
+           CONTACT INFORMATION
+        ===================================================== */
+
+        .contact-info {
+            padding: 45px;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .section-label {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            color: #e7b93c;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .contact-info h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: clamp(35px, 5vw, 55px);
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 20px;
+        }
+
+        .contact-info h2 span {
+            color: #e7b93c;
+        }
+
+        .contact-info > p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 40px;
+        }
+
+        /* =====================================================
+           CONTACT DETAILS
+        ===================================================== */
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 16px;
+
+            padding: 18px 0;
+
+            border-top: 1px solid rgba(245, 240, 223, 0.08);
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(231, 185, 60, 0.3);
+
+            color: #e7b93c;
+
+            font-size: 17px;
+        }
+
+        .contact-detail h3 {
+            font-size: 13px;
+
+            margin-bottom: 5px;
+        }
+
+        .contact-detail p,
+        .contact-detail a {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        .contact-detail a:hover {
+            color: #e7b93c;
+        }
+
+        /* =====================================================
+           CONTACT FORM
+        ===================================================== */
+
+        .contact-form-box {
+            padding: 45px;
+
+            border: 1px solid rgba(231, 185, 60, 0.2);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(231, 185, 60, 0.035),
+                    rgba(255, 255, 255, 0.015)
+                );
+        }
+
+        .contact-form-box h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-form-box > p {
+            color: rgba(245, 240, 223, 0.5);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: rgba(245, 240, 223, 0.75);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid rgba(245, 240, 223, 0.12);
+
+            background: #111111;
+
+            color: #f5f0df;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .form-group textarea {
+            min-height: 135px;
+
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: rgba(231, 185, 60, 0.7);
+
+            background: #151515;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .submit-button {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            background: #e7b93c;
+
+            color: #0d0d0d;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+
+            background: #f2ca58;
+        }
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        .form-message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px;
+
+            border: 1px solid rgba(231, 185, 60, 0.35);
+
+            color: #e7b93c;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        /* =====================================================
+           QUICK CONTACT
+        ===================================================== */
+
+        .quick-contact {
+            margin-top: 25px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .quick-card {
+            padding: 30px 25px;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            background: rgba(255, 255, 255, 0.02);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(231, 185, 60, 0.45);
+        }
+
+        .quick-card .quick-icon {
+            color: #e7b93c;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .quick-card h3 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 19px;
+
+            margin-bottom: 8px;
+        }
+
+        .quick-card p,
+        .quick-card a {
+            color: rgba(245, 240, 223, 0.5);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+        .quick-card a:hover {
+            color: #e7b93c;
+        }
+
+        /* =====================================================
+           LOCATION
+        ===================================================== */
+
+        .location-box {
+            margin-top: 25px;
+
+            padding: 40px;
+
+            border: 1px solid rgba(245, 240, 223, 0.1);
+
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .location-box h2 {
+            font-family: "Syne", sans-serif;
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+        .location-box h2 span {
+            color: #e7b93c;
+        }
+
+        .location-box p {
+            color: rgba(245, 240, 223, 0.55);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 35px 6%;
+
+            border-top: 1px solid rgba(245, 240, 223, 0.1);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        footer p {
+            color: rgba(245, 240, 223, 0.4);
+
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 240, 223, 0.5);
+
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #e7b93c;
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-contact {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: 70px;
+
+                padding: 0 5%;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero {
+                min-height: 370px;
+
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 54px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .contact-section {
+                padding: 70px 5% 90px;
+            }
+
+            .contact-info,
+            .contact-form-box {
+                padding: 30px 22px;
+            }
+
+            .contact-info h2 {
+                font-size: 42px;
+            }
+
+            .location-box {
+                padding: 30px 22px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 18px;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <a href="main_site.html">
+
+            <img
+                src="logo.png"
+                alt="Pitch Panchayat"
+                class="logo"
+            >
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="main_site.html#about">
+                About
+            </a>
+
+            <a href="main_site.html#timeline">
+                Timeline
+            </a>
+
+            <a href="main_site.html#schedule">
+                Schedule
+            </a>
+
+            <a href="main_site.html#awards">
+                Awards
+            </a>
+
+            <a href="team.html">
+                Team
+            </a>
+
+            <a href="contact.html" class="active">
+                Contact
+            </a>
+
+            <a
+                href="registration-panel.html"
+                class="nav-register"
+            >
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                PITCH PANCHAYAT 2026
+            </span>
+
+            <h1>
+                Let's <span>Talk.</span>
+            </h1>
+
+            <p>
+                Have a question about registration, participation,
+                partnerships or the event? Reach out to the
+                Pitch Panchayat team.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ===================================================== -->
+
+    <main class="contact-section">
+
+        <div class="contact-container">
+
+
+            <div class="contact-grid">
+
+
+                <!-- =============================================
+                     CONTACT INFORMATION
+                ============================================== -->
+
+                <section class="contact-info">
+
+                    <span class="section-label">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>
+                        We're here<br>
+                        to <span>help.</span>
+                    </h2>
+
+                    <p>
+                        Whether you have a question about registration,
+                        your team, the event schedule, partnerships or
+                        anything else related to Pitch Panchayat,
+                        feel free to contact us.
+                    </p>
+
+
+                    <div class="contact-details">
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                @
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Email
+                                </h3>
+
+                                <a href="mailto:support@pitchpanchayat.in">
+                                    support@pitchpanchayat.in
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                ●
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Location
+                                </h3>
+
+                                <p>
+                                    Hubballi, Karnataka, India
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                ↗
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Website
+                                </h3>
+
+                                <a href="https://pitchpanchayat.in">
+                                    pitchpanchayat.in
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =============================================
+                     CONTACT FORM
+                ============================================== -->
+
+                <section class="contact-form-box">
+
+                    <h2>
+                        Send us a message
+                    </h2>
+
+                    <p>
+                        Fill in the details below and our team
+                        will get back to you.
+                    </p>
+
+
+                    <form id="contactForm">
+
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Your Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="subject">
+                                Subject
+                            </label>
+
+                            <select
+                                id="subject"
+                                name="subject"
+                                required
+                            >
+
+                                <option value="" disabled selected>
+                                    Select a subject
+                                </option>
+
+                                <option value="registration">
+                                    Registration
+                                </option>
+
+                                <option value="participation">
+                                    Participation
+                                </option>
+
+                                <option value="team">
+                                    Team / Member Query
+                                </option>
+
+                                <option value="partnership">
+                                    Partnership
+                                </option>
+
+                                <option value="sponsorship">
+                                    Sponsorship
+                                </option>
+
+                                <option value="general">
+                                    General Enquiry
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="message">
+                                Message
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Write your message..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                        >
+                            Send Message
+                        </button>
+
+
+                        <div
+                            class="form-message"
+                            id="formMessage"
+                        >
+                            Your message has been prepared.
+                            Your email application will open now.
+                        </div>
+
+
+                    </form>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUICK CONTACT
+            ================================================= -->
+
+            <section class="quick-contact">
+
+
+                <div class="quick-card">
+
+                    <div class="quick-icon">
+                        ✉
+                    </div>
+
+                    <h3>
+                        General Enquiries
+                    </h3>
+
+                    <a href="mailto:support@pitchpanchayat.in">
+                        support@pitchpanchayat.in
+                    </a>
+
+                </div>
+
+
+                <div class="quick-card">
+
+                    <div class="quick-icon">
+                        ?
+                    </div>
+
+                    <h3>
+                        Need Help?
+                    </h3>
+
+                    <p>
+                        Ask us about registration,
+                        teams or participation.
+                    </p>
+
+                </div>
+
+
+                <div class="quick-card">
+
+                    <div class="quick-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Join Pitch Panchayat
+                    </h3>
+
+                    <a href="registration-panel.html">
+                        Register for the event →
+                    </a>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LOCATION
+            ================================================= -->
+
+            <section class="location-box">
+
+                <h2>
+                    Pitch Panchayat <span>2026</span>
+                </h2>
+
+                <p>
+                    Hubballi, Karnataka, India
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Pitch Panchayat. All rights reserved.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="terms-and-conditions.html">
+                Terms & Conditions
+            </a>
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="main_site.html">
+                Back to Website
+            </a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const subject =
+                document.getElementById("subject").value;
+
+            const message =
+                document.getElementById("message").value.trim();
+
+
+            if (!name || !email || !subject || !message) {
+                return;
+            }
+
+
+            /*
+             * Prepare an email using the user's
+             * default email application.
+             */
+
+            const emailSubject =
+                encodeURIComponent(
+                    "Pitch Panchayat Enquiry - " + subject
+                );
+
+
+            const emailBody =
+                encodeURIComponent(
+                    "Name: " + name +
+                    "\nEmail: " + email +
+                    "\nSubject: " + subject +
+                    "\n\nMessage:\n" + message
+                );
+
+
+            const mailto =
+                "mailto:support@pitchpanchayat.in" +
+                "?subject=" + emailSubject +
+                "&body=" + emailBody;
+
+
+            formMessage.classList.add("show");
+
+
+            window.location.href = mailto;
+
+        });
+
+    </script>
+
+
+</body>
+</html>

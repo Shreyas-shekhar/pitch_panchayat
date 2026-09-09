@@ -1,4 +1,5 @@
 import {
+
     db,
     collection,
     query,
@@ -6,61 +7,450 @@ import {
     getDocs,
     updateDoc,
     serverTimestamp
+
 } from "./firebase.js";
 
 
-// ==========================================
+// =====================================
 // HTML ELEMENTS
-// ==========================================
+// =====================================
 
 const scanBtn =
-    document.getElementById("scanBtn");
+document.getElementById("scanBtn");
 
-const reader =
-    document.getElementById("reader");
+
+const stopScannerBtn =
+document.getElementById("stopScannerBtn");
+
+
+const switchCameraBtn =
+document.getElementById("switchCameraBtn");
+
 
 const cameraSelect =
-    document.getElementById("cameraSelect");
+document.getElementById("cameraSelect");
+
+
+const reader =
+document.getElementById("reader");
+
+
+const scannerStatus =
+document.getElementById("scannerStatus");
+
 
 const participantInfo =
-    document.getElementById("participantInfo");
+document.getElementById("participantInfo");
 
 
-// ==========================================
-// SCANNER VARIABLES
-// ==========================================
+// =====================================
+// VARIABLES
+// =====================================
 
 let html5QrCode = null;
 
 let cameras = [];
 
-let isScanning = false;
+let currentCameraIndex = 0;
 
-let currentCameraId = null;
+let scannerRunning = false;
 
 
-// ==========================================
-// LOAD AVAILABLE CAMERAS
-// ==========================================
+// =====================================
+// LOAD CAMERAS
+// =====================================
 
 async function loadCameras() {
 
     try {
 
+        scannerStatus.innerText =
+        "Loading cameras...";
+
+
         cameras =
-            await Html5Qrcode.getCameras();
+        await Html5Qrcode.getCameras();
 
 
-        console.log(
-            "Available cameras:",
-            cameras
-        );
+        cameraSelect.innerHTML = "";
 
 
         if (!cameras || cameras.length === 0) {
 
+            cameraSelect.innerHTML = `
+
+                <option>
+
+                    No camera found
+
+                </option>
+
+            `;
+
+            scannerStatus.innerText =
+            "No camera detected.";
+
+            return;
+
+        }
+
+
+        cameras.forEach((camera, index) => {
+
+            const option =
+            document.createElement("option");
+
+
+            option.value =
+            camera.id;
+
+
+            option.text =
+            camera.label ||
+            `Camera ${index + 1}`;
+
+
+            cameraSelect.appendChild(option);
+
+        });
+
+
+        scannerStatus.innerText =
+        `${cameras.length} camera(s) detected`;
+
+
+        if (cameras.length > 1) {
+
+            switchCameraBtn.style.display =
+            "inline-block";
+
+        }
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Camera loading error:",
+            error
+        );
+
+
+        cameraSelect.innerHTML = `
+
+            <option>
+
+                Camera unavailable
+
+            </option>
+
+        `;
+
+
+        scannerStatus.innerText =
+        "Camera permission required.";
+
+    }
+
+}
+
+
+// =====================================
+// START SCANNER
+// =====================================
+
+async function startScanner() {
+
+    try {
+
+        // Stop old scanner first
+
+        if (scannerRunning) {
+
+            await stopScanner();
+
+        }
+
+
+        scannerStatus.innerText =
+        "Starting camera...";
+
+
+        const selectedCameraId =
+        cameraSelect.value;
+
+
+        if (!selectedCameraId) {
+
+            await loadCameras();
+
+        }
+
+
+        let cameraId =
+        cameraSelect.value;
+
+
+        // Create scanner
+
+        html5QrCode =
+        new Html5Qrcode("reader");
+
+
+        // Try selected camera
+
+        if (cameraId) {
+
+            await html5QrCode.start(
+
+                cameraId,
+
+                {
+
+                    fps: 10,
+
+                    qrbox: {
+
+                        width: 250,
+
+                        height: 250
+
+                    },
+
+                    aspectRatio: 1
+
+                },
+
+                onScanSuccess,
+
+                onScanFailure
+
+            );
+
+        }
+
+        else {
+
+            // Fallback for mobile
+
+            await html5QrCode.start(
+
+                {
+
+                    facingMode:
+                    "environment"
+
+                },
+
+                {
+
+                    fps: 10,
+
+                    qrbox: {
+
+                        width: 250,
+
+                        height: 250
+
+                    }
+
+                },
+
+                onScanSuccess,
+
+                onScanFailure
+
+            );
+
+        }
+
+
+        scannerRunning = true;
+
+
+        scanBtn.style.display =
+        "none";
+
+
+        stopScannerBtn.style.display =
+        "inline-block";
+
+
+        scannerStatus.innerText =
+        "Camera active. Scan QR code.";
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Scanner start error:",
+            error
+        );
+
+
+        scannerStatus.innerText =
+        "Unable to start camera. Please allow camera permission.";
+
+    }
+
+}
+
+
+// =====================================
+// STOP SCANNER
+// =====================================
+
+async function stopScanner() {
+
+    try {
+
+        if (
+            html5QrCode &&
+            scannerRunning
+        ) {
+
+            await html5QrCode.stop();
+
+            await html5QrCode.clear();
+
+        }
+
+
+        scannerRunning = false;
+
+
+        html5QrCode = null;
+
+
+        reader.innerHTML = "";
+
+
+        scanBtn.style.display =
+        "inline-block";
+
+
+        stopScannerBtn.style.display =
+        "none";
+
+
+        scannerStatus.innerText =
+        "Scanner stopped.";
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Stop scanner error:",
+            error
+        );
+
+    }
+
+}
+
+
+// =====================================
+// SWITCH CAMERA
+// =====================================
+
+async function switchCamera() {
+
+    if (
+        cameras.length < 2
+    ) {
+
+        alert(
+            "Only one camera is available."
+        );
+
+        return;
+
+    }
+
+
+    currentCameraIndex++;
+
+
+    if (
+        currentCameraIndex >=
+        cameras.length
+    ) {
+
+        currentCameraIndex = 0;
+
+    }
+
+
+    cameraSelect.value =
+    cameras[
+        currentCameraIndex
+    ].id;
+
+
+    if (scannerRunning) {
+
+        await stopScanner();
+
+        await startScanner();
+
+    }
+
+}
+
+
+// =====================================
+// QR SCAN SUCCESS
+// =====================================
+
+async function onScanSuccess(
+    decodedText
+) {
+
+    try {
+
+        // Stop camera immediately
+
+        if (
+            html5QrCode &&
+            scannerRunning
+        ) {
+
+            await html5QrCode.stop();
+
+            scannerRunning = false;
+
+        }
+
+
+        scannerStatus.innerText =
+        "QR Code detected!";
+
+
+        console.log(
+            "QR Data:",
+            decodedText
+        );
+
+
+        // Parse QR
+
+        const qrData =
+        JSON.parse(decodedText);
+
+
+        const registrationId =
+        qrData.registrationId;
+
+
+        if (!registrationId) {
+
             alert(
-                "No camera found on this device."
+                "Invalid QR Code."
             );
 
             return;
@@ -68,354 +458,406 @@ async function loadCameras() {
         }
 
 
-        // Clear old cameras
+        // Search Firestore
 
-        cameraSelect.innerHTML = "";
+        const registrationQuery =
+        query(
 
+            collection(
+                db,
+                "registrations"
+            ),
 
-        // Add all available cameras
+            where(
+                "registrationId",
+                "==",
+                registrationId
+            )
 
-        cameras.forEach(
-
-            (camera, index) => {
-
-
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-
-                option.value =
-                    camera.id;
+        );
 
 
-                // Better camera naming
-
-                let cameraName =
-                    camera.label ||
-                    `Camera ${index + 1}`;
-
-
-                option.textContent =
-                    cameraName;
+        const snapshot =
+        await getDocs(
+            registrationQuery
+        );
 
 
-                cameraSelect.appendChild(
-                    option
+        if (snapshot.empty) {
+
+            alert(
+                "Participant not found."
+            );
+
+            scannerStatus.innerText =
+            "Participant not found.";
+
+            return;
+
+        }
+
+
+        // Get participant
+
+        snapshot.forEach(
+            (participant) => {
+
+                const data =
+                participant.data();
+
+
+                showParticipant(
+                    participant,
+                    data
                 );
-
 
             }
 
         );
 
 
-        // ==================================
-        // Choose Rear Camera Automatically
-        // ==================================
-
-        const rearCamera =
-            cameras.find(
-
-                (camera) =>
-
-                    camera.label
-                        .toLowerCase()
-                        .includes("back")
-
-                    ||
-
-                    camera.label
-                        .toLowerCase()
-                        .includes("rear")
-
-                    ||
-
-                    camera.label
-                        .toLowerCase()
-                        .includes("environment")
-
-            );
-
-
-        currentCameraId =
-            rearCamera
-
-                ? rearCamera.id
-
-                : cameras[0].id;
-
-
-        cameraSelect.value =
-            currentCameraId;
-
-
     }
 
     catch (error) {
 
-        console.error(
-            "Camera Error:",
-            error
-        );
+        console.error(error);
 
 
         alert(
-            "Unable to access cameras. Please allow camera permission."
+            "Invalid QR Code."
         );
+
+
+        scannerStatus.innerText =
+        "Invalid QR Code.";
 
     }
 
 }
 
 
-// ==========================================
-// START SCANNER
-// ==========================================
+// =====================================
+// SCAN FAILURE
+// =====================================
 
-async function startScanner(cameraId) {
+function onScanFailure(error) {
 
-    try {
+    // Don't show errors continuously
+    // Normal when QR isn't visible
 
-
-        // Stop existing scanner first
-
-        if (
-            html5QrCode &&
-            isScanning
-        ) {
-
-            await html5QrCode.stop();
-
-            isScanning = false;
-
-        }
+}
 
 
-        reader.style.display =
-            "block";
+// =====================================
+// SHOW PARTICIPANT
+// =====================================
+
+function showParticipant(
+    participant,
+    data
+) {
+
+    let attendanceStatus =
+    data.attendance
+    ? "🟢 Checked In"
+    : "🔴 Not Checked In";
 
 
-        // Create scanner once
-
-        if (!html5QrCode) {
-
-            html5QrCode =
-                new Html5Qrcode(
-                    "reader"
-                );
-
-        }
+    let checkInTime = "";
 
 
-        currentCameraId =
-            cameraId;
+    if (
+        data.attendance &&
+        data.checkInTime
+    ) {
 
+        try {
 
-        console.log(
-            "Starting camera:",
-            currentCameraId
-        );
+            checkInTime =
 
+            `<p>
 
-        await html5QrCode.start(
+                <b>
+                    Checked In At:
+                </b>
 
-            currentCameraId,
-
-            {
-
-                fps: 10,
-
-                qrbox: {
-
-                    width: 250,
-
-                    height: 250
-
-                },
-
-                aspectRatio: 1.7778
-
-            },
-
-
-            // ==================================
-            // QR SUCCESS
-            // ==================================
-
-            async (decodedText) => {
-
-
-                if (!isScanning) {
-
-                    return;
-
+                ${data.checkInTime
+                    .toDate()
+                    .toLocaleString()
                 }
 
+            </p>`;
 
-                console.log(
-                    "QR Scanned:",
-                    decodedText
-                );
+        }
 
+        catch (error) {
 
-                // Prevent multiple scans
+            checkInTime = "";
 
-                isScanning =
-                    false;
+        }
 
-
-                try {
+    }
 
 
-                    await html5QrCode.stop();
+    participantInfo.innerHTML = `
+
+        <div class="participant-card">
+
+            <h2>
+
+                ${data.fullName || "Unknown"}
+
+            </h2>
 
 
-                    // Parse QR
+            <p>
 
-                    const qrData =
-                        JSON.parse(
-                            decodedText
-                        );
+                <b>
+                    Registration ID:
+                </b>
+
+                ${data.registrationId || "-"}
+
+            </p>
 
 
-                    const registrationId =
-                        qrData.registrationId;
+            <p>
+
+                <b>
+                    Email:
+                </b>
+
+                ${data.email || "-"}
+
+            </p>
 
 
-                    if (!registrationId) {
+            <p>
 
-                        throw new Error(
-                            "Invalid QR Code."
-                        );
+                <b>
+                    Phone:
+                </b>
+
+                ${data.phone || "-"}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    College:
+                </b>
+
+                ${data.college || "-"}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Category:
+                </b>
+
+                ${data.category || "-"}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Team Name:
+                </b>
+
+                ${data.teamName || "-"}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Status:
+                </b>
+
+                ${attendanceStatus}
+
+            </p>
+
+
+            ${checkInTime}
+
+
+            ${
+
+                !data.attendance
+
+                ?
+
+                `
+
+                <button
+                    id="attendanceBtn"
+                >
+
+                    ✅ Mark Attendance
+
+                </button>
+
+                `
+
+                :
+
+                `
+
+                <button
+                    id="scanAgainBtn"
+                >
+
+                    📷 Scan Another
+
+                </button>
+
+                `
+
+            }
+
+
+        </div>
+
+    `;
+
+
+    document
+    .getElementById(
+        "attendanceBtn"
+    )
+    ?.addEventListener(
+
+        "click",
+
+        async () => {
+
+            try {
+
+                await updateDoc(
+
+                    participant.ref,
+
+                    {
+
+                        attendance: true,
+
+                        checkInTime:
+                        serverTimestamp()
 
                     }
 
-
-                    console.log(
-                        "Registration ID:",
-                        registrationId
-                    );
+                );
 
 
-                    await loadParticipant(
-                        registrationId
-                    );
+                alert(
+                    "Attendance Marked Successfully!"
+                );
 
 
-                }
-
-                catch (error) {
-
-
-                    console.error(
-                        "QR Error:",
-                        error
-                    );
+                scannerStatus.innerText =
+                "Participant checked in successfully.";
 
 
-                    alert(
-                        "Invalid QR Code."
-                    );
+                showParticipant(
 
+                    participant,
 
-                }
+                    {
 
+                        ...data,
 
-            },
+                        attendance: true,
 
+                        checkInTime:
+                        new Date()
 
-            // QR Failure
+                    }
 
-            () => {
+                );
 
-                // Do nothing
-                // This runs continuously
-                // while searching for QR
 
             }
 
-        );
+            catch (error) {
 
+                console.error(error);
 
-        isScanning =
-            true;
+                alert(
+                    "Unable to mark attendance."
+                );
 
-
-    }
-
-    catch (error) {
-
-
-        console.error(
-            "Scanner Start Error:",
-            error
-        );
-
-
-        alert(
-            "Unable to start camera: " +
-            error.message
-        );
-
-
-    }
-
-}
-
-
-// ==========================================
-// STOP SCANNER
-// ==========================================
-
-async function stopScanner() {
-
-    try {
-
-
-        if (
-
-            html5QrCode &&
-
-            isScanning
-
-        ) {
-
-
-            await html5QrCode.stop();
-
-
-            isScanning =
-                false;
-
+            }
 
         }
 
-
-        reader.style.display =
-            "none";
+    );
 
 
-    }
+    document
+    .getElementById(
+        "scanAgainBtn"
+    )
+    ?.addEventListener(
 
-    catch (error) {
+        "click",
 
+        async () => {
 
-        console.error(
-            "Stop Scanner Error:",
-            error
-        );
+            participantInfo.innerHTML =
+            "";
 
+            await startScanner();
 
-    }
+        }
+
+    );
 
 }
 
 
-// ==========================================
-// CAMERA SWITCH
-// ==========================================
+// =====================================
+// BUTTON EVENTS
+// =====================================
+
+scanBtn.addEventListener(
+
+    "click",
+
+    startScanner
+
+);
+
+
+stopScannerBtn.addEventListener(
+
+    "click",
+
+    stopScanner
+
+);
+
+
+switchCameraBtn.addEventListener(
+
+    "click",
+
+    switchCamera
+
+);
+
+
+// =====================================
+// CAMERA DROPDOWN CHANGE
+// =====================================
 
 cameraSelect.addEventListener(
 
@@ -423,448 +865,32 @@ cameraSelect.addEventListener(
 
     async () => {
 
+        currentCameraIndex =
+        cameraSelect.selectedIndex;
 
-        const newCameraId =
-            cameraSelect.value;
 
+        if (scannerRunning) {
 
-        if (
+            await stopScanner();
 
-            newCameraId ===
-            currentCameraId
-
-        ) {
-
-            return;
+            await startScanner();
 
         }
-
-
-        await stopScanner();
-
-
-        await startScanner(
-            newCameraId
-        );
-
 
     }
 
 );
 
 
-// ==========================================
-// SCAN BUTTON
-// ==========================================
+// =====================================
+// LOAD CAMERAS WHEN PAGE OPENS
+// =====================================
 
-scanBtn.addEventListener(
+loadCameras();
 
-    "click",
 
-    async () => {
-
-
-        participantInfo.innerHTML =
-            "";
-
-
-        // Load cameras first
-
-        if (
-
-            cameras.length === 0
-
-        ) {
-
-            await loadCameras();
-
-        }
-
-
-        if (
-
-            !currentCameraId
-
-        ) {
-
-            alert(
-                "No camera available."
-            );
-
-            return;
-
-        }
-
-
-        // Start scanning
-
-        await startScanner(
-            currentCameraId
-        );
-
-
-    }
-
-);
-
-
-// ==========================================
-// LOAD PARTICIPANT
-// ==========================================
-
-async function loadParticipant(registrationId) {
-
-    try {
-
-
-        const q =
-            query(
-
-                collection(
-                    db,
-                    "registrations"
-                ),
-
-                where(
-
-                    "registrationId",
-
-                    "==",
-
-                    registrationId
-
-                )
-
-            );
-
-
-        const snapshot =
-            await getDocs(q);
-
-
-        if (
-
-            snapshot.empty
-
-        ) {
-
-
-            participantInfo.innerHTML =
-                `
-
-                <div class="participant-card error-card">
-
-                    <h2>
-                        Participant Not Found
-                    </h2>
-
-                    <p>
-                        Registration ID:
-                        ${registrationId}
-                    </p>
-
-                </div>
-
-                `;
-
-
-            return;
-
-        }
-
-
-        snapshot.forEach(
-
-            (participant) => {
-
-
-                const data =
-                    participant.data();
-
-
-                // ==================================
-                // Participant Details
-                // ==================================
-
-                participantInfo.innerHTML =
-                    `
-
-                    <div class="participant-card">
-
-                        <h2>
-                            ${data.fullName || "N/A"}
-                        </h2>
-
-
-                        <p>
-
-                            <b>
-                                Registration ID:
-                            </b>
-
-                            ${data.registrationId || "N/A"}
-
-                        </p>
-
-
-                        <p>
-
-                            <b>
-                                College:
-                            </b>
-
-                            ${data.college || "N/A"}
-
-                        </p>
-
-
-                        <p>
-
-                            <b>
-                                Category:
-                            </b>
-
-                            ${data.category || "N/A"}
-
-                        </p>
-
-
-                        <p>
-
-                            <b>
-                                Team:
-                            </b>
-
-                            ${data.teamName || data.startup || "N/A"}
-
-                        </p>
-
-
-                        <p>
-
-                            <b>
-                                Status:
-                            </b>
-
-                            ${
-
-                                data.attendance
-
-                                    ? "🟢 Checked In"
-
-                                    : "🔴 Not Checked In"
-
-                            }
-
-                        </p>
-
-
-                        ${
-
-                            data.attendance
-
-                                ?
-
-                                `
-
-                                <p>
-
-                                    <b>
-                                        Checked In At:
-                                    </b>
-
-                                    ${
-
-                                        data.checkInTime
-
-                                            ?
-
-                                            data.checkInTime
-                                                .toDate()
-                                                .toLocaleString()
-
-                                            :
-
-                                            "Unknown"
-
-                                    }
-
-                                </p>
-
-                                `
-
-                                :
-
-                                `
-
-                                <button
-                                    id="attendanceBtn"
-                                >
-
-                                    ✅ Mark Attendance
-
-                                </button>
-
-                                `
-
-                        }
-
-
-                    </div>
-
-                    `;
-
-
-                // ==================================
-                // ATTENDANCE BUTTON
-                // ==================================
-
-                const attendanceBtn =
-                    document.getElementById(
-                        "attendanceBtn"
-                    );
-
-
-                if (attendanceBtn) {
-
-
-                    attendanceBtn.addEventListener(
-
-                        "click",
-
-                        async () => {
-
-
-                            try {
-
-
-                                attendanceBtn.disabled =
-                                    true;
-
-
-                                attendanceBtn.innerText =
-                                    "Marking Attendance...";
-
-
-                                await updateDoc(
-
-                                    participant.ref,
-
-                                    {
-
-                                        attendance:
-                                            true,
-
-
-                                        checkInTime:
-                                            serverTimestamp()
-
-                                    }
-
-                                );
-
-
-                                alert(
-                                    "Attendance Marked Successfully!"
-                                );
-
-
-                                // Reload participant
-                                // details
-
-                                await loadParticipant(
-                                    registrationId
-                                );
-
-
-                            }
-
-                            catch (error) {
-
-
-                                console.error(
-                                    "Attendance Error:",
-                                    error
-                                );
-
-
-                                alert(
-                                    "Unable to mark attendance."
-                                );
-
-
-                                attendanceBtn.disabled =
-                                    false;
-
-
-                                attendanceBtn.innerText =
-                                    "✅ Mark Attendance";
-
-
-                            }
-
-
-                        }
-
-                    );
-
-
-                }
-
-
-            }
-
-        );
-
-
-    }
-
-    catch (error) {
-
-
-        console.error(
-            "Participant Load Error:",
-            error
-        );
-
-
-        alert(
-            "Unable to load participant information."
-        );
-
-
-    }
-
-}
-
-
-// ==========================================
-// PAGE CLEANUP
-// ==========================================
-
-window.addEventListener(
-
-    "beforeunload",
-
-    async () => {
-
-
-        await stopScanner();
-
-
-    }
-
-);
-
-
-// ==========================================
-// STARTUP
-// ==========================================
-
-reader.style.display =
-    "none";
-
+// =====================================
 
 console.log(
-    "QR Scanner ready."
+    "Pitch Panchayat QR Scanner Loaded"
 );

@@ -1,65 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Pitch Panchayat Check-In</title>
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="checkin.css">
+    <title>Pitch Panchayat Check-In</title>
+
+    <link 
+        rel="stylesheet" 
+        href="checkin.css"
+    >
 
 </head>
 
+
 <body>
 
-<dv class="container">
+<div class="container">
 
     <h1>Pitch Panchayat</h1>
 
     <h2>Participant Check-In</h2>
 
-    <div id="reader"></div>
 
-    <div id="resultCard" class="hidden">
+    <!-- CAMERA CONTROLS -->
 
-        <h2 id="participantName"></h2>
+    <div class="scanner-controls">
 
-        <p id="participantID"></p>
+        <button id="scanBtn">
 
-        <p id="participantCollege"></p>
+            📷 Start Scanner
 
-        <h3 id="status"></h3>
+        </button>
+
+
+        <select id="cameraSelect">
+
+            <option value="">
+
+                Loading cameras...
+
+            </option>
+
+        </select>
+
+
+        <button 
+            id="switchCameraBtn"
+            style="display:none;"
+        >
+
+            🔄 Switch Camera
+
+        </button>
+
+
+        <button 
+            id="stopScannerBtn"
+            style="display:none;"
+        >
+
+            ⛔ Stop Scanner
+
+        </button>
 
     </div>
 
+
+    <!-- QR CAMERA -->
+
+    <div id="reader"></div>
+
+
+    <!-- STATUS -->
+
+    <p id="scannerStatus">
+
+        Ready to scan
+
+    </p>
+
+
+    <!-- PARTICIPANT RESULT -->
+
+    <div 
+        id="resultCard" 
+        class="hidden"
+    >
+
+        <div id="participantInfo"></div>
+
+    </div>
+
+
 </div>
 
-<div class="scanner-controls">
 
-    <button id="scanBtn">
-        📷 Start Scanner
-    </button>
-
-
-    <select id="cameraSelect">
-
-        <option>
-            Loading cameras...
-        </option>
-
-    </select>
-
-</div>
-
-
-<div id="reader"></div>
-
-
-<div id="participantInfo"></div>
+<!-- QR SCANNER LIBRARY -->
 
 <script src="https://unpkg.com/html5-qrcode"></script>
-<script type="module" src="checkin.js"></script>
+
+
+<!-- YOUR FIREBASE SCANNER JS -->
+
+<script 
+    type="module" 
+    src="checkin.js"
+></script>
+
 
 </body>
+
 </html>

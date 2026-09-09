@@ -7,12 +7,17 @@ import {
     query,
     where,
     doc,
-    runTransaction
+    runTransaction,
+    onAuthStateChanged
 } from "./firebase.js";
+
 
 console.log("register.js loaded");
 
-const registrationId = await generateRegistrationId();
+
+// =======================================
+// Generate Registration ID
+// =======================================
 
 async function generateRegistrationId() {
 
@@ -42,11 +47,13 @@ async function generateRegistrationId() {
 
             const next = current + 1;
 
+
             transaction.update(counterRef, {
 
                 current: next
 
             });
+
 
             return `PP2026-${String(next).padStart(4, "0")}`;
 
@@ -57,121 +64,358 @@ async function generateRegistrationId() {
 
 }
 
-const form = document.getElementById("registrationForm");
+
+// =======================================
+// Registration Form
+// =======================================
+
+const form =
+    document.getElementById("registrationForm");
 
 
 form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
+
+
     const user = auth.currentUser;
 
-if (!user) {
 
-    alert("Please login first.");
+    if (!user) {
 
-    window.location.href = "main_site.html";
+        alert("Please login first.");
 
-    return;
+        window.location.href =
+            "main_site.html";
 
-}
-    console.log("Submit button clicked");
+        return;
+
+    }
+
+
+    console.log(
+        "Submit button clicked"
+    );
 
 
     try {
 
+
+        // =======================================
+        // Check Existing Registration
+        // =======================================
+
         const existingRegistration = query(
-    collection(db, "registrations"),
-    where("uid", "==", user.uid)
-);
 
-const snapshot = await getDocs(existingRegistration);
+            collection(
+                db,
+                "registrations"
+            ),
 
-if (!snapshot.empty) {
+            where(
+                "uid",
+                "==",
+                user.uid
+            )
 
-    alert("You have already registered for Pitch Panchayat.");
-
-    return;
-
-}
-
-
-    const registrationId =
-    await generateRegistrationId();
+        );
 
 
-        await addDoc(collection(db, "registrations"), {
+        const snapshot =
+            await getDocs(
+                existingRegistration
+            );
 
-    registrationId: registrationId,
 
-    uid: user.uid,
+        if (!snapshot.empty) {
 
-    userEmail: user.email,
+            alert(
+                "You have already registered for Pitch Panchayat."
+            );
 
-    fullName: document.getElementById("fullName").value,
+            return;
 
-    email: document.getElementById("email").value,
+        }
 
-    phone: document.getElementById("phone").value,
 
-    college: document.getElementById("college").value,
+        // =======================================
+        // Generate Registration ID
+        // =======================================
 
-    age: document.getElementById("age").value,
+        const registrationId =
+            await generateRegistrationId();
 
-    startup: document.getElementById("startup").value,
 
-    category: document.getElementById("category").value,
+        // =======================================
+        // Team Information
+        // =======================================
 
-    idea: document.getElementById("idea").value,
+        const teamMembers = [
 
-    attendance: false,
+            {
 
-    checkInTime: null,
+                name:
+                    document.getElementById(
+                        "participant1Name"
+                    ).value,
 
-    registeredAt: new Date()
+                phone:
+                    document.getElementById(
+                        "participant1Phone"
+                    ).value
 
-});
+            },
 
-        alert("Registration Successful!");
+
+            {
+
+                name:
+                    document.getElementById(
+                        "participant2Name"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "participant2Phone"
+                    ).value
+
+            },
+
+
+            {
+
+                name:
+                    document.getElementById(
+                        "participant3Name"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "participant3Phone"
+                    ).value
+
+            },
+
+
+            {
+
+                name:
+                    document.getElementById(
+                        "participant4Name"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "participant4Phone"
+                    ).value
+
+            },
+
+
+            {
+
+                name:
+                    document.getElementById(
+                        "participant5Name"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "participant5Phone"
+                    ).value
+
+            }
+
+        ];
+
+
+        // =======================================
+        // Save Registration
+        // =======================================
+
+        await addDoc(
+            collection(
+                db,
+                "registrations"
+            ),
+
+            {
+
+                // Registration Information
+
+                registrationId:
+                    registrationId,
+
+
+                uid:
+                    user.uid,
+
+
+                userEmail:
+                    user.email,
+
+
+                // Personal Information
+
+                fullName:
+                    document.getElementById(
+                        "fullName"
+                    ).value,
+
+
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value,
+
+
+                phone:
+                    document.getElementById(
+                        "phone"
+                    ).value,
+
+
+                college:
+                    document.getElementById(
+                        "college"
+                    ).value,
+
+
+                age:
+                    document.getElementById(
+                        "age"
+                    ).value,
+
+
+                // Startup Information
+
+                category:
+                    document.getElementById(
+                        "category"
+                    ).value,
+
+
+                idea:
+                    document.getElementById(
+                        "idea"
+                    ).value,
+
+
+                // Team Information
+
+                teamName:
+                    document.getElementById(
+                        "teamName"
+                    ).value,
+
+
+                teamMembers:
+                    teamMembers,
+
+
+                // Event Information
+
+                attendance:
+                    false,
+
+
+                checkInTime:
+                    null,
+
+
+                // Registration Date
+
+                registeredAt:
+                    new Date()
+
+            }
+
+        );
+
+
+        // =======================================
+        // Save Registration ID Locally
+        // =======================================
 
         localStorage.setItem(
-    "registrationId",
-    registrationId
-);
 
-        window.location.href="registration-successful.html";
+            "registrationId",
+
+            registrationId
+
+        );
+
+
+        alert(
+            "Registration Successful!"
+        );
+
+
+        // =======================================
+        // Redirect
+        // =======================================
+
+        window.location.href =
+            "registration-successful.html";
+
 
     } catch (error) {
 
+
         console.error(error);
 
-        alert("Registration Failed!");
+
+        alert(
+            "Registration Failed! Please try again."
+        );
 
     }
 
 });
+
 
 // =======================================
 // Auto-fill Logged-in User Information
 // =======================================
 
-import {
-    onAuthStateChanged
-} from "./firebase.js";
-
 onAuthStateChanged(auth, (user) => {
 
-    if (!user) return;
 
-    const emailInput = document.getElementById("email");
-    const nameInput = document.getElementById("fullName");
+    if (!user) {
 
-    if (emailInput) {
-        emailInput.value = user.email || "";
-        emailInput.readOnly = true;
+        return;
+
     }
 
-    if (nameInput && user.displayName) {
-        nameInput.value = user.displayName;
+
+    const emailInput =
+        document.getElementById("email");
+
+
+    const nameInput =
+        document.getElementById("fullName");
+
+
+    if (emailInput) {
+
+        emailInput.value =
+            user.email || "";
+
+
+        emailInput.readOnly =
+            true;
+
+    }
+
+
+    if (
+        nameInput &&
+        user.displayName
+    ) {
+
+        nameInput.value =
+            user.displayName;
+
     }
 
 });

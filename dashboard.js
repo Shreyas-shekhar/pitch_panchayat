@@ -8,238 +8,910 @@ import {
     signOut
 } from "./firebase.js";
 
+
 // ===========================
-// HTML Elements
+// HTML ELEMENTS
 // ===========================
 
 const table = document.getElementById("registrationTable");
-const totalRegistrations = document.getElementById("totalRegistrations");
-const organizationCount = document.getElementById("organizationCount");
-const startupCount = document.getElementById("startupCount");
-const checkedIn = document.getElementById("checkedIn");
-const pending = document.getElementById("pending");
 
-const searchInput = document.getElementById("searchInput");
+const totalRegistrations =
+    document.getElementById("totalRegistrations");
 
-const popup = document.getElementById("popup");
-const popupDescription = document.getElementById("popupDescription");
-const closePopup = document.getElementById("closePopup");
+const organizationCount =
+    document.getElementById("organizationCount");
 
-// ===========================
+const startupCount =
+    document.getElementById("startupCount");
+
+const checkedIn =
+    document.getElementById("checkedIn");
+
+const pending =
+    document.getElementById("pending");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const popup =
+    document.getElementById("popup");
+
+const popupDescription =
+    document.getElementById("popupDescription");
+
+const closePopup =
+    document.getElementById("closePopup");
 
 let registrations = [];
 
+
 // ===========================
-// Firebase Listener
+// FIREBASE REGISTRATION LISTENER
 // ===========================
 
-const registrationRef = collection(db, "registrations");
+const registrationRef =
+    collection(db, "registrations");
 
-onSnapshot(registrationRef, (snapshot) => {
 
-    registrations = [];
+onSnapshot(
+    registrationRef,
 
-    snapshot.forEach((documentSnapshot) => {
+    (snapshot) => {
 
-        registrations.push({
+        console.log(
+            "Registrations received:",
+            snapshot.size
+        );
 
-            id: documentSnapshot.id,
+        registrations = [];
 
-            ...documentSnapshot.data()
+
+        snapshot.forEach((documentSnapshot) => {
+
+            registrations.push({
+
+                id: documentSnapshot.id,
+
+                ...documentSnapshot.data()
+
+            });
 
         });
 
-    });
 
-    renderTable(registrations);
+        renderTable(registrations);
 
-});
+    },
+
+    (error) => {
+
+        console.error(
+            "Firebase loading error:",
+            error
+        );
+
+        alert(
+            "Unable to load registrations: " +
+            error.message
+        );
+
+    }
+
+);
+
 
 // ===========================
-// Render Table
+// RENDER TABLE
 // ===========================
 
-function renderTable(data){
+function renderTable(data) {
 
-    function attachEvents() {
+    if (!table) {
 
-    document.querySelectorAll(".view-btn").forEach(button => {
+        console.error(
+            "registrationTable not found in HTML"
+        );
 
-        button.onclick = () => {
+        return;
 
-            popup.classList.remove("hidden");
+    }
 
-            popupDescription.innerText =
-                button.dataset.description;
-
-        };
-
-    });
-
-}
 
     table.innerHTML = "";
 
+
     const organizations = new Set();
 
-    const startups = new Set();
+    const teams = new Set();
 
     let checkedInCount = 0;
 
-    data.forEach(student=>{
 
-        organizations.add(student.organization);
+    data.forEach((student) => {
 
-        startups.add(student.startup);
 
-        if(student.attendance){
+        // Statistics
 
-    checkedInCount++;
+        if (student.college) {
 
-}
+            organizations.add(
+                student.college
+            );
+
+        }
+
+
+        if (student.teamName) {
+
+            teams.add(
+                student.teamName
+            );
+
+        }
+
+
+        if (student.attendance === true) {
+
+            checkedInCount++;
+
+        }
+
+
+        // Team Members
+
+        const teamMembers =
+            student.teamMembers || [];
+
+
+        // Create Table Row
 
         table.innerHTML += `
 
-<tr>
+        <tr>
 
-<td>${student.fullName}</td>
+            <td>
+                ${student.registrationId || "N/A"}
+            </td>
 
-<td>${student.email}</td>
+            <td>
+                ${student.fullName || "N/A"}
+            </td>
 
-<td>${student.phone}</td>
+            <td>
+                ${student.email || "N/A"}
+            </td>
 
-<td>${student.college}</td>
+            <td>
+                ${student.phone || "N/A"}
+            </td>
 
-<td>${student.startup}</td>
+            <td>
+                ${student.college || "N/A"}
+            </td>
 
-<td>${student.age}</td>
+            <td>
+                ${student.age || "N/A"}
+            </td>
 
-<td>${student.idea}</td>
+            <td>
+                ${student.category || "N/A"}
+            </td>
 
-<td>${student.category}</td>
+            <td>
+                ${student.teamName || student.startup || "N/A"}
+            </td>
 
-<td>
+            <td>
+                ${teamMembers.length || 0}
+            </td>
 
-<button
-class="view-btn"
-data-description="${student.idea}">
+            <td>
 
-View
+                <button
+                    class="view-btn"
+                    data-id="${student.id}"
+                >
+                    View
+                </button>
 
-</button>
+            </td>
 
-</td>
+            <td>
 
-<td>
+                <button
+                    class="delete-btn"
+                    data-id="${student.id}"
+                >
+                    Delete
+                </button>
 
-<button
-class="delete-btn"
-data-id="${student.id}">
+            </td>
 
-Delete
+        </tr>
 
-</button>
-
-</td>
-
-</tr>
-
-`;
+        `;
 
     });
 
-    totalRegistrations.innerText = data.length;
 
-    organizationCount.innerText = organizations.size;
+    // Update Statistics
 
-    startupCount.innerText = startups.size;
+    if (totalRegistrations) {
 
-    checkedIn.innerText = checkedInCount;
+        totalRegistrations.innerText =
+            data.length;
 
-    pending.innerText = data.length - checkedInCount;
+    }
+
+
+    if (organizationCount) {
+
+        organizationCount.innerText =
+            organizations.size;
+
+    }
+
+
+    if (startupCount) {
+
+        startupCount.innerText =
+            teams.size;
+
+    }
+
+
+    if (checkedIn) {
+
+        checkedIn.innerText =
+            checkedInCount;
+
+    }
+
+
+    if (pending) {
+
+        pending.innerText =
+            data.length - checkedInCount;
+
+    }
+
 
     attachEvents();
 
 }
 
-// ===========================
-// Search
-// ===========================
-
-searchInput.addEventListener("keyup", () => {
-
-    const keyword = searchInput.value.toLowerCase().trim();
-
-    const filtered = registrations.filter(student =>
-
-        (student.fullName || "").toLowerCase().includes(keyword) ||
-
-        (student.college || "").toLowerCase().includes(keyword) ||
-
-        (student.startup || "").toLowerCase().includes(keyword) ||
-
-        (student.email || "").toLowerCase().includes(keyword) ||
-
-        (student.phone || "").toLowerCase().includes(keyword) ||
-
-        (student.category || "").toLowerCase().includes(keyword) ||
-
-        (student.age || "").toLowerCase().includes(keyword) ||
-
-        (student.idea || "").toLowerCase().includes(keyword)
-
-    );
-
-    renderTable(filtered);
-
-});
 
 // ===========================
-// View Popup + Delete
+// BUTTON EVENTS
 // ===========================
 
 function attachEvents() {
 
-    // View Description
 
-    document.querySelectorAll(".view-btn").forEach(button => {
+    // VIEW BUTTON
 
-        button.onclick = () => {
+    document
+        .querySelectorAll(".view-btn")
+        .forEach((button) => {
 
-            popup.classList.remove("hidden");
 
-            popupDescription.innerText =
-                button.dataset.description || "No description available.";
+            button.addEventListener(
+                "click",
 
-        };
+                () => {
 
-    });
+                    const student =
+                        registrations.find(
 
-    // Delete Registration
+                            (item) =>
+                                item.id ===
+                                button.dataset.id
 
-    document.querySelectorAll(".delete-btn").forEach(button => {
+                        );
 
-        button.onclick = async () => {
 
-            const confirmDelete = confirm(
-                "Are you sure you want to delete this registration?"
+                    if (!student) {
+
+                        alert(
+                            "Registration not found."
+                        );
+
+                        return;
+
+                    }
+
+
+                    showRegistrationDetails(
+                        student
+                    );
+
+                }
+
             );
 
-            if (!confirmDelete) return;
+        });
 
-            try {
 
-                await deleteDoc(
+    // DELETE BUTTON
 
-                    doc(
-                        db,
-                        "registrations",
-                        button.dataset.id
-                    )
+    document
+        .querySelectorAll(".delete-btn")
+        .forEach((button) => {
+
+
+            button.addEventListener(
+                "click",
+
+                async () => {
+
+
+                    const registrationDocId =
+                        button.dataset.id;
+
+
+                    if (!registrationDocId) {
+
+                        alert(
+                            "Registration ID not found."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const confirmDelete =
+                        confirm(
+
+                            "Are you sure you want to permanently delete this registration?"
+
+                        );
+
+
+                    if (!confirmDelete) {
+
+                        return;
+
+                    }
+
+
+                    try {
+
+
+                        console.log(
+
+                            "Deleting:",
+
+                            registrationDocId
+
+                        );
+
+
+                        await deleteDoc(
+
+                            doc(
+
+                                db,
+
+                                "registrations",
+
+                                registrationDocId
+
+                            )
+
+                        );
+
+
+                        alert(
+
+                            "Registration deleted successfully."
+
+                        );
+
+
+                    }
+
+                    catch (error) {
+
+
+                        console.error(
+
+                            "Delete Error:",
+
+                            error
+
+                        );
+
+
+                        alert(
+
+                            "Unable to delete registration: " +
+
+                            error.message
+
+                        );
+
+
+                    }
+
+
+                }
+
+            );
+
+
+        });
+
+
+}
+
+
+// ===========================
+// SHOW REGISTRATION DETAILS
+// ===========================
+
+function showRegistrationDetails(student) {
+
+
+    if (!popup) {
+
+        alert(
+            "Popup element not found."
+        );
+
+        return;
+
+    }
+
+
+    popup.classList.remove(
+        "hidden"
+    );
+
+
+    const members =
+        student.teamMembers || [];
+
+
+    let teamHTML = "";
+
+
+    members.forEach(
+        (member, index) => {
+
+            teamHTML += `
+
+                <div class="popup-team-member">
+
+                    <h4>
+                        Participant ${index + 1}
+                    </h4>
+
+                    <p>
+                        <strong>Name:</strong>
+                        ${member.name || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        ${member.phone || "N/A"}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    if (teamHTML === "") {
+
+        teamHTML = `
+
+            <p>
+                No team information available.
+            </p>
+
+        `;
+
+    }
+
+
+    if (popupDescription) {
+
+        popupDescription.innerHTML = `
+
+            <h2>
+                Registration Details
+            </h2>
+
+
+            <hr>
+
+
+            <p>
+                <strong>Registration ID:</strong>
+                ${student.registrationId || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>Full Name:</strong>
+                ${student.fullName || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>Email:</strong>
+                ${student.email || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>Phone:</strong>
+                ${student.phone || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>College:</strong>
+                ${student.college || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>Age:</strong>
+                ${student.age || "N/A"}
+            </p>
+
+
+            <p>
+                <strong>Category:</strong>
+                ${student.category || "N/A"}
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                Startup Idea
+            </h3>
+
+
+            <p>
+                ${student.idea || "No idea provided."}
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                Team Information
+            </h3>
+
+
+            <p>
+                <strong>Team Name:</strong>
+                ${student.teamName || "N/A"}
+            </p>
+
+
+            ${teamHTML}
+
+
+            <hr>
+
+
+            <p>
+                <strong>Attendance:</strong>
+
+                ${
+
+                    student.attendance
+
+                    ? "Checked In"
+
+                    : "Pending"
+
+                }
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+// ===========================
+// SEARCH
+// ===========================
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+
+        () => {
+
+
+            const keyword =
+
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const filtered =
+                registrations.filter(
+                    (student) => {
+
+
+                        const members =
+                            student.teamMembers || [];
+
+
+                        const teamMatch =
+                            members.some(
+                                (member) =>
+
+                                    (
+                                        member.name || ""
+                                    )
+                                        .toLowerCase()
+                                        .includes(keyword)
+
+                                    ||
+
+                                    (
+                                        member.phone || ""
+                                    )
+                                        .includes(keyword)
+
+                            );
+
+
+                        return (
+
+                            (
+                                student.registrationId || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.fullName || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.email || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.phone || ""
+                            )
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.college || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.teamName || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.startup || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            (
+                                student.category || ""
+                            )
+                                .toLowerCase()
+                                .includes(keyword)
+
+                            ||
+
+                            teamMatch
+
+                        );
+
+                    }
 
                 );
 
-                alert("Registration deleted successfully.");
+
+            renderTable(filtered);
+
+
+        }
+
+    );
+
+}
+
+
+// ===========================
+// CLOSE POPUP
+// ===========================
+
+if (closePopup) {
+
+    closePopup.addEventListener(
+        "click",
+
+        () => {
+
+            popup.classList.add(
+                "hidden"
+            );
+
+        }
+
+    );
+
+}
+
+
+window.addEventListener(
+    "click",
+
+    (event) => {
+
+        if (
+            popup &&
+            event.target === popup
+        ) {
+
+            popup.classList.add(
+                "hidden"
+            );
+
+        }
+
+    }
+
+);
+
+
+// ===========================
+// NAVIGATION
+// ===========================
+
+const dashboardSection =
+    document.getElementById(
+        "dashboardSection"
+    );
+
+const participantsSection =
+    document.getElementById(
+        "participantsSection"
+    );
+
+
+const navDashboard =
+    document.getElementById(
+        "navDashboard"
+    );
+
+
+if (navDashboard) {
+
+    navDashboard.addEventListener(
+        "click",
+
+        (e) => {
+
+            e.preventDefault();
+
+            dashboardSection?.scrollIntoView({
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+    );
+
+}
+
+
+const navParticipants =
+    document.getElementById(
+        "navParticipants"
+    );
+
+
+if (navParticipants) {
+
+    navParticipants.addEventListener(
+        "click",
+
+        (e) => {
+
+            e.preventDefault();
+
+            participantsSection?.scrollIntoView({
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+    );
+
+}
+
+
+// ===========================
+// LOGOUT
+// ===========================
+
+const logoutBtn =
+    document.getElementById(
+        "navLogout"
+    );
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+
+        async (e) => {
+
+            e.preventDefault();
+
+
+            if (
+
+                !confirm(
+                    "Are you sure you want to logout?"
+                )
+
+            ) {
+
+                return;
+
+            }
+
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href =
+                    "main_site.html";
 
             }
 
@@ -247,228 +919,20 @@ function attachEvents() {
 
                 console.error(error);
 
-                alert("Unable to delete registration.");
+                alert(
+                    "Logout failed: " +
+                    error.message
+                );
 
             }
 
-        };
-
-    });
-
-}
-
-// ===========================
-// Close Popup
-// ===========================
-
-if (closePopup) {
-
-    closePopup.onclick = () => {
-
-        popup.classList.add("hidden");
-
-    };
-
-}
-
-window.onclick = (event) => {
-
-    if (event.target === popup) {
-
-        popup.classList.add("hidden");
-
-    }
-
-};
-
-// ===========================
-// Export CSV
-// ===========================
-
-const exportBtn = document.getElementById("exportBtn");
-
-if (exportBtn) {
-
-    exportBtn.onclick = () => {
-
-        let csv =
-            "Full Name,Email,Mobile,Organization,Startup,age group,idea,category\n";
-
-        registrations.forEach(student => {
-
-            csv += `"${student.fullName}","${student.email}","${student.phone}","${student.college}","${student.startup}","${student.age}","${student.idea}","${student.category}"\n`;
-
-        });
-
-        const blob = new Blob([csv], {
-
-            type: "text/csv"
-
-        });
-
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-
-        a.href = url;
-
-        a.download = "Pitch_Panchayat_Registrations.csv";
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        document.body.removeChild(a);
-
-        URL.revokeObjectURL(url);
-
-    };
-
-}
-
-console.log("✅ Dashboard Connected Successfully.");
-
-closePopup.onclick = () => {
-
-    popup.classList.add("hidden");
-
-};
-
-window.onclick = (e) => {
-
-    if (e.target === popup) {
-
-        popup.classList.add("hidden");
-
-    }
-
-};
-
-const dashboardSection = document.getElementById("dashboardSection");
-const participantsSection = document.getElementById("participantsSection");
-
-document.getElementById("navDashboard").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    dashboardSection.scrollIntoView({
-        behavior:"smooth"
-    });
-
-});
-
-document.getElementById("navParticipants").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    participantsSection.scrollIntoView({
-        behavior:"smooth"
-    });
-
-});
-
-document.getElementById("navStartups").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    searchInput.value="";
-
-    renderTable(
-
-        registrations.filter(student=>student.startup)
-
-    );
-
-});
-
-document.getElementById("navOrganizations").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    searchInput.value="";
-
-    renderTable(
-
-        registrations.filter(student=>student.college)
-
-    );
-
-});
-
-document.getElementById("navSettings").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    alert("Settings page coming soon.");
-
-});
-
-// ==========================================
-// Admin Logout
-// ==========================================
-
-const logoutBtn = document.getElementById("navLogout");
-
-if (logoutBtn) {
-
-    logoutBtn.addEventListener("click", async (e) => {
-
-        e.preventDefault();
-
-        const confirmLogout = confirm(
-            "Are you sure you want to logout?"
-        );
-
-        if (!confirmLogout) return;
-
-        try {
-
-            await signOut(auth);
-
-            window.location.href = "main_site.html";
-
-        } catch (error) {
-
-            console.error(error);
-
-            alert("Logout failed.");
-
         }
 
-    });
+    );
 
 }
 
-// ==========================================
-// Logout
-// ==========================================
 
-// const logoutBtn = document.getElementById("navLogout");
-
-logoutBtn.addEventListener("click", async (e) => {
-
-    e.preventDefault();
-
-    const confirmLogout = confirm(
-        "Are you sure you want to logout?"
-    );
-
-    if (!confirmLogout) return;
-
-    try {
-
-        await signOut(auth);
-
-        window.location.href = "main_site.html";
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        alert(error.message);
-
-    }
-
-});
+console.log(
+    "Dashboard JS loaded successfully."
+);

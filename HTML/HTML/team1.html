@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our Team | Pitch Panchayat</title>
+
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ================================
+           BODY
+        ================================= */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #ffffff;
+        }
+
+
+        /* ================================
+           TEAM SECTION
+        ================================= */
+
+        .team-section {
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px 8%;
+            background: #050505;
+        }
+
+
+        /* ================================
+           SECTION HEADER
+        ================================= */
+
+        .section-header {
+            margin-top: 100px;
+            margin-bottom: 45px;
+        }
+
+
+        .section-header:first-child {
+            margin-top: 0;
+        }
+
+
+        .section-header span {
+            display: inline-block;
+
+            color: #f5c518;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+
+            text-transform: uppercase;
+        }
+
+
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 65px);
+
+            font-weight: 800;
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+
+            color: #ffffff;
+        }
+
+
+        /* ================================
+           TEAM GRID
+        ================================= */
+
+        .team-grid {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 30px;
+        }
+
+
+        /* ================================
+           EVENT CREW GRID
+        ================================= */
+
+        .team-grid.crew {
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+
+        /* ================================
+           MEMBER CARD
+        ================================= */
+
+        .member-card {
+            position: relative;
+
+            min-height: 420px;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #080808
+                );
+
+            border:
+                1px solid
+                #252525;
+
+            transition:
+                transform 0.35s ease,
+                border 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        .member-card:hover {
+            transform:
+                translateY(-8px);
+
+            border-color:
+                #f5c518;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* ================================
+           MEMBER IMAGE
+        ================================= */
+
+        .member-card img {
+            width: 100%;
+
+            height: 100%;
+
+            position: absolute;
+
+            inset: 0;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.5s ease;
+        }
+
+
+        .member-card:hover img {
+            transform:
+                scale(1.05);
+        }
+
+
+        /* ================================
+           IMAGE PLACEHOLDER
+        ================================= */
+
+        .member-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #252525,
+                    #101010
+                );
+
+            z-index: -1;
+        }
+
+
+        /* ================================
+           OVERLAY
+        ================================= */
+
+        .overlay {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding:
+                70px 25px
+                25px;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0, 0, 0, 0.95),
+                    rgba(0, 0, 0, 0.7),
+                    transparent
+                );
+        }
+
+
+        .overlay h3 {
+            font-size: 26px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+
+            color: #ffffff;
+        }
+
+
+        .overlay p {
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #f5c518;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .overlay span {
+            display: block;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            color: #c7c7c7;
+        }
+
+
+        /* ================================
+           TECH TEAM
+        ================================= */
+
+        .tech-container {
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+
+        .tech-card {
+            width: 350px;
+
+            max-width: 100%;
+        }
+
+
+        /* ================================
+           EVENT CREW CARDS
+        ================================= */
+
+        .crew .member-card {
+            min-height: 360px;
+        }
+
+
+        .crew .overlay {
+            padding:
+                60px 20px
+                20px;
+        }
+
+
+        .crew .overlay h3 {
+            font-size: 21px;
+        }
+
+
+        .crew .overlay span {
+            font-size: 13px;
+        }
+
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 1100px) {
+
+            .team-section {
+                padding:
+                    80px 6%;
+            }
+
+
+            .team-grid.crew {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            .team-section {
+                padding:
+                    70px 6%;
+            }
+
+
+            .section-header {
+                margin-top: 70px;
+
+                margin-bottom: 30px;
+            }
+
+
+            .section-header h2 {
+                font-size: 36px;
+
+                letter-spacing: -1px;
+            }
+
+
+            .team-grid {
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+
+            .team-grid.crew {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 15px;
+            }
+
+
+            .member-card {
+                min-height: 400px;
+            }
+
+
+            .crew .member-card {
+                min-height: 280px;
+            }
+
+
+            .overlay {
+                padding:
+                    70px 18px
+                    20px;
+            }
+
+
+            .overlay h3 {
+                font-size: 20px;
+            }
+
+
+            .overlay p {
+                font-size: 11px;
+            }
+
+
+            .overlay span {
+                font-size: 12px;
+            }
+
+
+            .tech-card {
+                width: 100%;
+            }
+
+        }
+
+
+        /* ================================
+           SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 400px) {
+
+            .team-grid.crew {
+                grid-template-columns: 1fr;
+            }
+
+
+            .crew .member-card {
+                min-height: 350px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     ORGANISING TEAM
+================================= -->
+
+<section class="team-section">
+
+
+    <!-- =============================
+         LEADERSHIP
+    ============================== -->
+
+    <div class="section-header">
+
+        <span>
+            ORGANISING TEAM
+        </span>
+
+        <h2>
+            Meet The People Behind The Vision
+        </h2>
+
+    </div>
+
+
+    <div class="team-grid founders">
+
+
+        <!-- FOUNDER -->
+
+        <div class="member-card">
+
+            <img
+                src="images/founder.jpg"
+                alt="Founder"
+            >
+
+            <div class="overlay">
+
+                <h3>
+                    Founder Name
+                </h3>
+
+                <p>
+                    Founder
+                </p>
+
+                <span>
+                    Leading the vision and building a platform
+                    where young innovators can explore ideas,
+                    entrepreneurship and real-world opportunities.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CO-FOUNDER -->
+
+        <div class="member-card">
+
+            <img
+                src="images/cofounder.jpg"
+                alt="Co-Founder"
+            >
+
+            <div class="overlay">
+
+                <h3>
+                    Co-Founder Name
+                </h3>
+
+                <p>
+                    Co-Founder
+                </p>
+
+                <span>
+                    Helping transform the vision of Pitch Panchayat
+                    into meaningful experiences and opportunities
+                    for young innovators.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =============================
+         TECH TEAM
+    ============================== -->
+
+    <div class="section-header">
+
+        <span>
+            TECH TEAM
+        </span>
+
+        <h2>
+            Building The Platform
+        </h2>
+
+    </div>
+
+
+    <div class="tech-container">
+
+
+        <div class="member-card tech-card">
+
+            <img
+                src="images/tech-member.jpg"
+                alt="Tech Team"
+            >
+
+            <div class="overlay">
+
+                <h3>
+                    Tech Member Name
+                </h3>
+
+                <p>
+                    Technical Team
+                </p>
+
+                <span>
+                    Building and managing the digital experience
+                    that brings Pitch Panchayat and its community
+                    together online.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =============================
+         EVENT CREW
+    ============================== -->
+
+    <div class="section-header">
+
+        <span>
+            EVENT CREW
+        </span>
+
+        <h2>
+            The People Who Make It Happen
+        </h2>
+
+    </div>
+
+
+    <div class="team-grid crew">
+
+
+        <!-- MEMBER 01 -->
+
+        <div class="member-card">
+
+            <img src="images/member1.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 1</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Working behind the scenes to create
+                    a memorable experience.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 02 -->
+
+        <div class="member-card">
+
+            <img src="images/member2.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 2</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Turning plans and ideas into action.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 03 -->
+
+        <div class="member-card">
+
+            <img src="images/member3.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 3</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Helping bring every part of the event together.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 04 -->
+
+        <div class="member-card">
+
+            <img src="images/member4.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 4</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Focused on creating smooth and meaningful
+                    event experiences.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 05 -->
+
+        <div class="member-card">
+
+            <img src="images/member5.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 5</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Supporting the ideas, people and moments
+                    that make the event possible.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 06 -->
+
+        <div class="member-card">
+
+            <img src="images/member6.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 6</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Bringing energy, organisation and teamwork
+                    to the event.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 07 -->
+
+        <div class="member-card">
+
+            <img src="images/member7.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 7</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Helping ensure every experience runs smoothly.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBER 08 -->
+
+        <div class="member-card">
+
+            <img src="images/member8.jpg" alt="Event Crew Member">
+
+            <div class="overlay">
+
+                <h3>Member 8</h3>
+
+                <p>Event Crew</p>
+
+                <span>
+                    Playing an important role in bringing
+                    Pitch Panchayat to life.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</body>
+
+</html>

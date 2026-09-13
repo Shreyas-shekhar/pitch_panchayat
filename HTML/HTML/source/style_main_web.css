@@ -1325,19 +1325,19 @@ select{
 
 .awards-section{
   background:
-    radial-gradient(circle at top, rgba(214,181,111,0.14), transparent 28%),
-    linear-gradient(180deg, #07111f 0%, #0b1627 100%);
+    radial-gradient(circle at top, rgb(245, 244, 242), transparent 28%),
+    linear-gradient(180deg, #f3f4f5 0%, #f4f5f7 100%);
 }
 
 .awards-grid{
   max-width: var(--max);
-  margin: 30px auto 0;
+  margin: 50px auto 0;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .award-card{
   padding: 26px;
-  min-height: 270px;
+  min-height: 300px;
   transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
 
@@ -1795,7 +1795,7 @@ select{
   padding: 108px 24px;
   background:
     radial-gradient(circle at top, rgba(214,181,111,0.10), transparent 26%),
-    linear-gradient(180deg, rgba(8,16,28,0.98), rgba(11,22,39,0.98));
+    linear-gradient(180deg, #FCC021, #FCC025);
   border: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -1825,7 +1825,7 @@ select{
 }
 
 .hero-section h2 span{
-  color: var(--gold-2);
+  color:#8A6A00;
 }
 
 .hero-section p{
@@ -2951,17 +2951,16 @@ h1,h2,h3,
    TIMELINE TITLE
 ========================================= */
 
-.timeline-title {
-    margin: 0 0 55px;
-    text-align: center;
-
-    font-family: Impact, "Arial Narrow Bold", sans-serif;
-    font-size: clamp(70px, 11vw, 150px);
-    font-weight: 900;
-    letter-spacing: 3px;
-
-    color: #111;
-    line-height: 0.9;
+.timeline-title { 
+    margin: 0 0 55px; 
+    text-align: center; 
+ 
+    font-size: clamp(40px, 5vw, 70px);
+    font-weight: 800;
+    letter-spacing: -2px;
+ 
+    color: #111; 
+    line-height: 1;
 }
 
 
@@ -3299,4 +3298,1562 @@ h1,h2,h3,
     opacity: 0.85;
 }
 
+/* ============================= */
+/* WHY PARTICIPATE */
+/* ============================= */
+
+.why-participate-section {
+
+    width: 100%;
+    padding: 80px 8%;
+    box-sizing: border-box;
+
+}
+
+
+.why-title {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+}
+
+
+/* Cards */
+
+.participate-container {
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.participate-card {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    transition: 0.3s ease;
+
+}
+
+
+.participate-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #e7b93c;
+
+}
+
+
+/* Number */
+
+.participate-number {
+
+    min-width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border: 1px solid #e7b93c;
+
+    border-radius: 50%;
+
+    color: #e7b93c;
+
+    font-weight: bold;
+
+}
+
+
+/* Text */
+
+.participate-content h3 {
+
+    margin: 0 0 10px 0;
+
+}
+
+
+.participate-content p {
+
+    margin: 0;
+
+    line-height: 1.6;
+
+}
+
+
+/* Last card */
+
+.participate-card:last-child {
+
+    grid-column: 1 / 3;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .participate-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .participate-card:last-child {
+
+        grid-column: auto;
+
+    }
+
+
+    .why-participate-section {
+
+        padding: 60px 6%;
+
+    }
+
+}
+
+/* =========================================
+   PITCH BAZAAR EVENT FORMAT
+========================================= */
+
+.pitch-bazaar-format {
+
+    width: 100%;
+
+    padding: 100px 8%;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.pitch-bazaar-format-header {
+
+    max-width: 750px;
+
+    margin: 0 auto 80px;
+
+    text-align: center;
+
+}
+
+
+.pb-format-tag {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 8px 18px;
+
+    border: 1px solid rgba(231, 185, 60, 0.6);
+
+    border-radius: 30px;
+
+    color: #e7b93c;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.pitch-bazaar-format-header h2 {
+
+    margin: 0 0 20px;
+
+    font-size: clamp(40px, 5vw, 70px);
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+}
+
+
+.pb-format-description {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================
+   PHASE CARD
+========================================= */
+
+.pb-phase-card {
+
+    position: relative;
+
+    max-width: 1000px;
+
+    margin: 0 auto 25px;
+
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    gap: 45px;
+
+    padding: 45px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* Yellow side accent */
+
+.pb-phase-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 5px;
+
+    height: 100%;
+
+    background: #e7b93c;
+
+    opacity: 0;
+
+    transition: opacity 0.35s ease;
+
+}
+
+
+.pb-phase-card:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(231, 185, 60, 0.65);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.25);
+
+}
+
+
+.pb-phase-card:hover::before {
+
+    opacity: 1;
+
+}
+
+
+/* =========================================
+   PHASE NUMBER
+========================================= */
+
+.pb-phase-number {
+
+    width: fit-content;
+
+    height: fit-content;
+
+    padding: 12px 18px;
+
+    border: 1px solid rgba(231, 185, 60, 0.7);
+
+    border-radius: 8px;
+
+    color: #e7b93c;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================
+   PHASE CONTENT
+========================================= */
+
+.pb-phase-content {
+
+    min-width: 0;
+
+}
+
+
+.pb-phase-content h3 {
+
+    margin: 0 0 8px;
+
+    font-size: clamp(28px, 3vw, 40px);
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+.pb-phase-content h4 {
+
+    margin: 0 0 25px;
+
+    color: #e7b93c;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+}
+
+
+.pb-phase-content h5 {
+
+    margin: 28px 0 12px;
+
+    color: #e7b93c;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================
+   PARAGRAPHS
+========================================= */
+
+.pb-phase-content p {
+
+    margin: 18px 0;
+
+    line-height: 1.8;
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================================
+   LISTS
+========================================= */
+
+.pb-phase-content ul {
+
+    margin: 15px 0 20px;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+
+.pb-phase-content ul li {
+
+    position: relative;
+
+    padding-left: 28px;
+
+    margin-bottom: 13px;
+
+    line-height: 1.7;
+
+    opacity: 0.85;
+
+}
+
+
+.pb-phase-content ul li::before {
+
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -2px;
+
+    color: #e7b93c;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   ORDERED LIST
+========================================= */
+
+.pb-phase-content ol {
+
+    margin: 20px 0;
+
+    padding-left: 25px;
+
+}
+
+
+.pb-phase-content ol li {
+
+    margin-bottom: 13px;
+
+    padding-left: 8px;
+
+    line-height: 1.7;
+
+    opacity: 0.85;
+
+}
+
+
+.pb-phase-content ol li::marker {
+
+    color: #e7b93c;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================
+   SUB LIST
+========================================= */
+
+.pb-phase-content .pb-sub-list {
+
+    margin-left: 15px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid rgba(231, 185, 60, 0.45);
+
+}
+
+
+/* =========================================
+   HIGHLIGHT BOX
+========================================= */
+
+.pb-phase-highlight {
+
+    margin-top: 30px;
+
+    padding: 20px 24px;
+
+    border: 1px solid rgba(231, 185, 60, 0.5);
+
+    border-radius: 10px;
+
+    background: rgba(231, 185, 60, 0.06);
+
+    font-weight: 600;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   FINAL PHASE
+========================================= */
+
+.pb-phase-final {
+
+    border-color: rgba(231, 185, 60, 0.4);
+
+}
+
+
+.pb-phase-final .pb-phase-number {
+
+    background: #e7b93c;
+
+    color: #111;
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .pitch-bazaar-format {
+
+        padding: 80px 6%;
+
+    }
+
+
+    .pb-phase-card {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+        padding: 35px;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+    .pitch-bazaar-format {
+
+        padding: 65px 5%;
+
+    }
+
+
+    .pitch-bazaar-format-header {
+
+        margin-bottom: 50px;
+
+    }
+
+
+    .pb-phase-card {
+
+        padding: 25px 20px;
+
+        border-radius: 14px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .pb-phase-number {
+
+        padding: 10px 14px;
+
+        font-size: 11px;
+
+    }
+
+
+    .pb-phase-content h3 {
+
+        font-size: 28px;
+
+    }
+
+
+    .pb-phase-content h4 {
+
+        font-size: 15px;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .pb-phase-content p,
+
+    .pb-phase-content ul li,
+
+    .pb-phase-content ol li {
+
+        font-size: 14px;
+
+    }
+
+
+    .pb-phase-highlight {
+
+        padding: 16px;
+
+        font-size: 14px;
+
+    }
+
+}
+
+/* =========================================================
+   COMPLETE RESPONSIVE OPTIMIZATION
+   Paste this at the VERY BOTTOM of style_main_web.css
+   Desktop design remains unchanged
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL DEVICE FIXES
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+
+/* Prevent text and cards from causing horizontal scroll */
+
+.hero-text,
+.pb-phase-content,
+.timeline-bar,
+.participate-content,
+.contact-card,
+.award-card,
+.about-card,
+.cta-content {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   LARGE TABLETS
+   1024px and below
+========================================================= */
+
+@media screen and (max-width: 1024px) {
+
+    /* NAVIGATION */
+
+    .parliament-nav {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 20px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+
+    /* GLOBAL SECTIONS */
+
+    .content > section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+
+    /* HERO / ABOUT */
+
+    .hero-text {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(42px, 7vw, 70px);
+    }
+
+    .hero-text h4 {
+        max-width: 100%;
+    }
+
+
+    /* GRIDS */
+
+    .about-grid,
+    .awards-grid,
+    .contact-grid,
+    .sponsor-grid,
+    .agenda-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* PARTICIPATE */
+
+    .participate-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* CTA */
+
+    .cta-content {
+        width: 100%;
+    }
+
+
+    /* AUTH */
+
+    .auth-wrapper {
+        width: 95%;
+        max-width: 900px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+   900px and below
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    /* GLOBAL */
+
+    .content > section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+
+    /* NAVBAR */
+
+    .parliament-nav {
+        padding: 15px 25px;
+        min-height: auto;
+        flex-wrap: wrap;
+    }
+
+    .nav-logo img {
+        max-height: 55px;
+        width: auto;
+    }
+
+    .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+
+    /* HERO */
+
+    .hero-text h1 {
+        font-size: clamp(40px, 7vw, 65px);
+        line-height: 1.05;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-text h4 {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* EVENT FORMAT */
+
+    .pitch-bazaar-format {
+        padding: 75px 5%;
+    }
+
+    .pb-phase-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 35px;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline-section {
+        padding: 75px 25px;
+    }
+
+    .timeline-type {
+        left: -10px;
+    }
+
+
+    /* TEAM */
+
+    .team-grid.crew {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* AUTH */
+
+    .auth-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE + SMALL TABLET
+   768px and below
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* GLOBAL */
+
+    .content > section {
+        padding: 65px 20px;
+    }
+
+
+    /* NAVBAR */
+
+    .parliament-nav {
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav-logo img {
+        max-height: 48px;
+    }
+
+    .nav-links {
+        width: 100%;
+        order: 3;
+        justify-content: center;
+        gap: 12px 18px;
+        margin: 10px 0 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    .register-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+
+    /* HERO */
+
+    .hero-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(38px, 10vw, 60px);
+        line-height: 1.08;
+    }
+
+    .hero-badge {
+        font-size: 11px;
+        padding: 8px 14px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .hero-text h4 {
+        font-size: 15px;
+        line-height: 1.75;
+        text-align: left;
+    }
+
+
+    /* HERO BUTTONS */
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+
+    /* SECTION TITLES */
+
+    .section-title h2,
+    .section-header h2,
+    .faq-heading h2,
+    .countdown-header h2,
+    .journey-header h2,
+    .agenda-header h2,
+    .floor-header h2 {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+
+    /* PITCH BAZAAR FORMAT */
+
+    .pitch-bazaar-format {
+        padding: 65px 20px;
+    }
+
+    .pitch-bazaar-format-header {
+        margin-bottom: 50px;
+    }
+
+    .pitch-bazaar-format-header h2,
+    .pb-format-header h2 {
+        font-size: clamp(32px, 9vw, 48px);
+    }
+
+    .pb-format-description {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .pb-phase-card {
+        padding: 30px 25px;
+    }
+
+    .pb-phase-content h3 {
+        font-size: 30px;
+    }
+
+
+    /* PARTICIPATE */
+
+    .participate-container {
+        grid-template-columns: 1fr;
+    }
+
+    .participate-card:last-child {
+        grid-column: auto;
+    }
+
+
+    /* GRIDS */
+
+    .about-grid,
+    .awards-grid,
+    .contact-grid,
+    .sponsor-grid,
+    .agenda-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* TEAM */
+
+    .team-grid.founders,
+    .team-grid.crew {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CTA */
+
+    .cta-content {
+        padding: 35px 25px;
+        text-align: center;
+    }
+
+
+    /* CONTACT */
+
+    .contact-grid {
+        gap: 20px;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline-section {
+        padding: 70px 20px;
+    }
+
+    .timeline-title {
+        font-size: clamp(40px, 10vw, 60px);
+        margin-bottom: 45px;
+    }
+
+    .timeline-item {
+        padding-top: 28px;
+    }
+
+    .timeline-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 35px 22px 25px;
+    }
+
+    .timeline-date {
+        white-space: normal;
+        text-align: left;
+    }
+
+    .timeline-note {
+        text-align: left;
+        margin: 10px 0 25px;
+    }
+
+
+    /* AUTH */
+
+    .auth-overlay {
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    .auth-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .auth-page {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   600px and below
+========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    /* GLOBAL */
+
+    .content > section {
+        padding: 55px 18px;
+    }
+
+
+    /* NAVBAR */
+
+    .parliament-nav {
+        padding: 12px 15px;
+    }
+
+    .nav-logo img {
+        max-height: 42px;
+    }
+
+    .nav-links {
+        gap: 10px 14px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .register-btn {
+        padding: 9px 14px;
+        font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .hero-text h1 {
+        font-size: clamp(34px, 10vw, 50px);
+        letter-spacing: -1px;
+    }
+
+    .hero-text h4 {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+    }
+
+
+    /* BUTTONS */
+
+    .hero-buttons,
+    .countdown-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+
+    /* SECTION HEADINGS */
+
+    .section-title h2,
+    .section-header h2,
+    .faq-heading h2,
+    .countdown-header h2,
+    .journey-header h2,
+    .agenda-header h2,
+    .floor-header h2 {
+        font-size: 34px;
+    }
+
+
+    /* PITCH BAZAAR */
+
+    .pitch-bazaar-format {
+        padding: 55px 18px;
+    }
+
+    .pb-format-tag {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .pb-phase-card {
+        padding: 25px 18px;
+        gap: 20px;
+        border-radius: 14px;
+    }
+
+    .pb-phase-number {
+        padding: 9px 13px;
+        font-size: 10px;
+    }
+
+    .pb-phase-content h3 {
+        font-size: 26px;
+    }
+
+    .pb-phase-content h4 {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+
+    .pb-phase-content p,
+    .pb-phase-content li {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .pb-phase-highlight {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+
+    /* WHY PARTICIPATE */
+
+    .why-participate-section {
+        padding: 55px 18px;
+    }
+
+    .why-title {
+        font-size: 36px;
+    }
+
+    .participate-card {
+        padding: 20px;
+    }
+
+    .participate-number {
+        min-width: 40px;
+        height: 40px;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline-section {
+        padding: 60px 15px;
+    }
+
+    .timeline-title {
+        font-size: clamp(36px, 10vw, 50px);
+    }
+
+    .timeline-type {
+        left: 8px;
+        min-width: 90px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .timeline-bar {
+        padding: 35px 18px 20px;
+    }
+
+    .timeline-phase {
+        font-size: 19px;
+    }
+
+    .timeline-date {
+        font-size: 22px;
+    }
+
+    .timeline-note {
+        font-size: 13px;
+    }
+
+
+    /* CARDS */
+
+    .about-card,
+    .award-card,
+    .contact-card,
+    .day-card,
+    .committee-card {
+        width: 100%;
+    }
+
+
+    /* TEAM */
+
+    .member-card {
+        min-height: 320px;
+    }
+
+    .member-card img {
+        min-height: 320px;
+    }
+
+
+    /* CTA */
+
+    .cta-content {
+        padding: 28px 18px;
+        border-radius: 20px;
+    }
+
+    .cta-content h2 {
+        font-size: 30px;
+    }
+
+
+    /* AUTH */
+
+    .login-card,
+    .auth-card {
+        padding: 20px 16px;
+    }
+
+    .hero-section {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   480px and below
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    /* NAV */
+
+    .parliament-nav {
+        padding: 10px 12px;
+    }
+
+    .nav-logo img {
+        max-height: 38px;
+    }
+
+    .nav-links {
+        gap: 8px 12px;
+        margin-top: 8px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .register-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+
+    /* HERO */
+
+    .hero-badge {
+        font-size: 9px;
+        padding: 7px 11px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(30px, 10vw, 42px);
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-text h4 {
+        font-size: 13px;
+    }
+
+
+    /* CONTENT */
+
+    .content > section {
+        padding: 50px 15px;
+    }
+
+
+    /* HEADINGS */
+
+    .section-title h2,
+    .section-header h2,
+    .faq-heading h2,
+    .countdown-header h2,
+    .journey-header h2,
+    .agenda-header h2,
+    .floor-header h2 {
+        font-size: 30px;
+    }
+
+
+    /* EVENT FORMAT */
+
+    .pitch-bazaar-format {
+        padding: 50px 15px;
+    }
+
+    .pb-phase-card {
+        padding: 22px 15px;
+    }
+
+    .pb-phase-content h3 {
+        font-size: 24px;
+    }
+
+    .pb-phase-content h4 {
+        font-size: 14px;
+    }
+
+    .pb-phase-content p,
+    .pb-phase-content ul li,
+    .pb-phase-content ol li {
+        font-size: 13px;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline-section {
+        padding: 50px 12px;
+    }
+
+    .timeline-bar {
+        padding: 32px 15px 18px;
+    }
+
+    .timeline-type {
+        left: 5px;
+    }
+
+
+    /* CTA */
+
+    .cta-content h2 {
+        font-size: 26px;
+    }
+
+    .cta-content p {
+        font-size: 14px;
+    }
+
+
+    /* TEAM */
+
+    .member-card {
+        min-height: 280px;
+    }
+
+    .member-card img {
+        min-height: 280px;
+    }
+
+
+    /* CONTACT */
+
+    .contact-card {
+        padding: 20px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   360px and below
+========================================================= */
+
+@media screen and (max-width: 360px) {
+
+    .nav-links {
+        gap: 7px 9px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .register-btn {
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 30px;
+    }
+
+    .pb-phase-content h3 {
+        font-size: 22px;
+    }
+
+    .timeline-title {
+        font-size: 34px;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICE OPTIMIZATION
+   Removes unwanted hover movement on mobile
+========================================================= */
+
+@media (hover: none) {
+
+    .pb-phase-card:hover,
+    .timeline-bar:hover,
+    .participate-card:hover,
+    .about-card:hover,
+    .award-card:hover,
+    .member-card:hover {
+        transform: none;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    .hero {
+        min-height: auto;
+    }
+
+    .auth-overlay {
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+}
 

@@ -824,8 +824,8 @@
                                     Email
                                 </h3>
 
-                                <a href="mailto:support@pitchpanchayat.in">
-                                    support@pitchpanchayat.in
+                                <a href="mailto:pitchpanchayat123@gmail.com">
+                                    pitchpanchayat123@gmail.com
                                 </a>
 
                             </div>
@@ -866,8 +866,8 @@
                                     Website
                                 </h3>
 
-                                <a href="https://pitchpanchayat.in">
-                                    pitchpanchayat.in
+                                <a href="https://pitchpanchayat.com">
+                                    pitchpanchayat.com
                                 </a>
 
                             </div>
@@ -1037,8 +1037,8 @@
                         General Enquiries
                     </h3>
 
-                    <a href="mailto:support@pitchpanchayat.in">
-                        support@pitchpanchayat.in
+                    <a href="mailto:pitchpanchayat123@gmail.com">
+                        pitchpanchayat123@gmail.com
                     </a>
 
                 </div>
@@ -1137,77 +1137,84 @@
 
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
+   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
 
-    <script>
+<script>
 
-        const contactForm =
-            document.getElementById("contactForm");
-
-        const formMessage =
-            document.getElementById("formMessage");
+emailjs.init({
+    publicKey: "mZBZTwbIuugx37K-P"
+});
 
 
-        contactForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-
-            const name =
-                document.getElementById("name").value.trim();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const subject =
-                document.getElementById("subject").value;
-
-            const message =
-                document.getElementById("message").value.trim();
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+const submitButton = contactForm.querySelector(".submit-button");
 
 
-            if (!name || !email || !subject || !message) {
-                return;
-            }
+contactForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    submitButton.innerText = "Sending...";
+    submitButton.disabled = true;
+
+    formMessage.innerText = "";
 
 
-            /*
-             * Prepare an email using the user's
-             * default email application.
-             */
+    try {
 
-            const emailSubject =
-                encodeURIComponent(
-                    "Pitch Panchayat Enquiry - " + subject
-                );
+        const response = await emailjs.sendForm(
 
+            "service_ty7zs96",
 
-            const emailBody =
-                encodeURIComponent(
-                    "Name: " + name +
-                    "\nEmail: " + email +
-                    "\nSubject: " + subject +
-                    "\n\nMessage:\n" + message
-                );
+            "template_yw632bf",
+
+            contactForm
+
+        );
+
+        console.log(
+            "Email sent successfully:",
+            response
+        );
 
 
-            const mailto =
-                "mailto:support@pitchpanchayat.in" +
-                "?subject=" + emailSubject +
-                "&body=" + emailBody;
+        formMessage.innerText =
+            "Message sent successfully! Our team will get back to you soon.";
+
+        formMessage.classList.add("show");
+
+        contactForm.reset();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "FULL EMAILJS ERROR:",
+            error
+        );
+
+        formMessage.innerText =
+            "Error: " +
+            (error.text || error.message || "Unable to send message.");
+
+        formMessage.classList.add("show");
+
+    }
 
 
-            formMessage.classList.add("show");
+    submitButton.innerText = "Send Message";
 
+    submitButton.disabled = false;
 
-            window.location.href = mailto;
+});
 
-        });
+</script>
 
-    </script>
+</body>
 
+</html>
 
 </body>
 </html>

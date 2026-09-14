@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pitch Bazaar Registration</title>
+
+    <link rel="stylesheet" href="source/style_registration.css">
+
+</head>
+
+
+<body>
+
+
+<section class="register-section">
+
+    <div class="register-card">
+
+        <span class="section-tag">
+            REGISTER NOW
+        </span>
+
+
+        <h2>
+
+            Register Now for
+
+            <span>Pitch Bazaar</span>
+
+        </h2>
+
+
+        <p>
+
+            Present your startup idea, receive expert feedback,
+            connect with innovators, and compete for exciting prizes.
+
+        </p>
+
+
+        <!-- REGISTRATION FORM -->
+
+        <form class="register-form" id="registrationForm">
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <input
+                type="text"
+                placeholder="Full Name"
+                id="fullName"
+                required
+            >
+
+
+            <input
+                type="email"
+                placeholder="Email Address"
+                id="email"
+                required
+            >
+
+
+            <input
+                type="tel"
+                placeholder="Phone Number"
+                id="phone"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+
+            <input
+                type="text"
+                placeholder="College / Organization"
+                id="college"
+                required
+            >
+
+
+            <!-- AGE -->
+
+            <select id="age" required>
+
+                <option value="">
+                    Select Age Group
+                </option>
+
+                <option value="15 Years">
+                    15 Years
+                </option>
+
+                <option value="16 Years">
+                    16 Years
+                </option>
+
+                <option value="17 Years">
+                    17 Years
+                </option>
+
+                <option value="18 Years">
+                    18 Years
+                </option>
+
+                <option value="19 Years">
+                    19 Years
+                </option>
+
+                <option value="20 Years">
+                    20 Years
+                </option>
+
+                <option value="21 Years">
+                    21 Years
+                </option>
+
+                <option value="22+ Years">
+                    22+ Years
+                </option>
+
+            </select>
+
+
+            <!-- CATEGORY -->
+
+            <!-- <select id="category" required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="Technology">
+                    Technology
+                </option>
+
+                <option value="Healthcare">
+                    Healthcare
+                </option>
+
+                <option value="Education">
+                    Education
+                </option>
+
+                <option value="Sustainability">
+                    Sustainability
+                </option>
+
+                <option value="Finance">
+                    Finance
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select> -->
+
+
+            <!-- STARTUP IDEA -->
+
+            
+
+
+            <!-- TEAM INFORMATION -->
+
+            <p class="team-subtitle">
+
+                Enter your team information and details
+                of all participants.
+
+            </p>
+
+
+            <!-- TEAM NAME -->
+
+            <div class="form-group">
+
+                <input
+                    type="text"
+                    id="teamName"
+                    name="teamName"
+                    placeholder="Enter your Team Name / Startup Name"
+                    required
+                >
+
+            </div>
+                <textarea
+                id="idea"
+                placeholder="Describe your startup idea in a few lines"
+                rows="5"
+                required
+            ></textarea>
+
+            <!-- PARTICIPANT 1 -->
+
+            <div class="participant-card">
+
+                <h4>
+                    Participant 1
+                </h4>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="participant1Name"
+                        placeholder="Enter Full Name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        id="participant1Phone"
+                        placeholder="Enter Phone Number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PARTICIPANT 2 -->
+
+            <div class="participant-card">
+
+                <h4>
+                    Participant 2
+                </h4>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="participant2Name"
+                        placeholder="Enter Full Name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        id="participant2Phone"
+                        placeholder="Enter Phone Number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PARTICIPANT 3 -->
+
+            <div class="participant-card">
+
+                <h4>
+                    Participant 3
+                </h4>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="participant3Name"
+                        placeholder="Enter Full Name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        id="participant3Phone"
+                        placeholder="Enter Phone Number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PARTICIPANT 4 -->
+
+            <div class="participant-card">
+
+                <h4>
+                    Participant 4
+                </h4>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="participant4Name"
+                        placeholder="Enter Full Name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        id="participant4Phone"
+                        placeholder="Enter Phone Number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PARTICIPANT 5 -->
+
+            <div class="participant-card">
+
+                <h4>
+                    Participant 5
+                </h4>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="participant5Name"
+                        placeholder="Enter Full Name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="tel"
+                        id="participant5Phone"
+                        placeholder="Enter Phone Number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <div class="terms-consent">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                >
+
+
+                <label for="terms">
+
+                    I confirm that I have read and agree to the
+
+                    <a href="terms.html">
+                        Terms and Conditions
+                    </a>
+
+                    and am willing to comply with them.
+
+                </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit">
+
+                Register Now →
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</section>
+
+
+<button id="logoutBtn">
+
+    Logout
+
+</button>
+
+
+<!-- JAVASCRIPT -->
+
+<script
+    type="module"
+    src="./register.js">
+</script>
+
+
+<script
+    type="module"
+    src="./protect.js">
+</script>
+
+
+</body>
+
+</html>

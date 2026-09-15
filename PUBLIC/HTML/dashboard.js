@@ -160,7 +160,7 @@ function renderTable(data) {
         // Team Members
 
         const teamMembers =
-            student.teamMembers || [];
+            student.participants || [];
 
 
         // Create Table Row

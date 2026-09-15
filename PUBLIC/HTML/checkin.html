@@ -5,15 +5,15 @@
 
     <meta charset="UTF-8">
 
-    <meta 
-        name="viewport" 
+    <meta
+        name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
     <title>Pitch Panchayat Check-In</title>
 
-    <link 
-        rel="stylesheet" 
+    <link
+        rel="stylesheet"
         href="checkin.css"
     >
 
@@ -34,40 +34,32 @@
     <div class="scanner-controls">
 
         <button id="scanBtn">
-
             📷 Start Scanner
-
         </button>
 
 
         <select id="cameraSelect">
 
             <option value="">
-
                 Loading cameras...
-
             </option>
 
         </select>
 
 
-        <button 
+        <button
             id="switchCameraBtn"
             style="display:none;"
         >
-
             🔄 Switch Camera
-
         </button>
 
 
-        <button 
+        <button
             id="stopScannerBtn"
             style="display:none;"
         >
-
             ⛔ Stop Scanner
-
         </button>
 
     </div>
@@ -81,23 +73,36 @@
     <!-- STATUS -->
 
     <p id="scannerStatus">
-
         Ready to scan
-
     </p>
 
 
     <!-- PARTICIPANT RESULT -->
 
-    <div 
-        id="resultCard" 
+    <div
+        id="resultCard"
         class="hidden"
     >
 
-        <div id="participantInfo"></div>
+        <div id="participantInfo">
+
+            <h3 id="participantName"></h3>
+
+            <p>
+                <strong>Registration ID:</strong>
+                <span id="participantID"></span>
+            </p>
+
+            <p>
+                <strong>College / Organization:</strong>
+                <span id="participantCollege"></span>
+            </p>
+
+            <h3 id="status"></h3>
+
+        </div>
 
     </div>
-
 
 </div>
 
@@ -107,10 +112,10 @@
 <script src="https://unpkg.com/html5-qrcode"></script>
 
 
-<!-- YOUR FIREBASE SCANNER JS -->
+<!-- FIREBASE SCANNER JS -->
 
-<script 
-    type="module" 
+<script
+    type="module"
     src="checkin.js"
 ></script>
 

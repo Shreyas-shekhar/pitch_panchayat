@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin-login.html
+Disallow: /dashboard.html
+Disallow: /scanner.html
+
+Sitemap: https://pitchpanchayat.com/sitemap.xml

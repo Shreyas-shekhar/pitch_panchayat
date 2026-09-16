@@ -202,7 +202,7 @@ function renderTable(data) {
             </td>
 
             <td>
-                ${teamMembers.length || 0}
+                ${teamMembers.length || 5}
             </td>
 
             <td>
@@ -470,7 +470,7 @@ function showRegistrationDetails(student) {
 
 
     const members =
-        student.teamMembers || [];
+        student.participants || [];
 
 
     let teamHTML = "";
@@ -652,7 +652,7 @@ if (searchInput) {
 
 
                         const members =
-                            student.teamMembers || [];
+                            student.participants || [];
 
 
                         const teamMatch =

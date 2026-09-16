@@ -646,3 +646,4 @@ if (loginForm) {
 console.log(
     "AUTH.JS FULLY LOADED"
 );
+

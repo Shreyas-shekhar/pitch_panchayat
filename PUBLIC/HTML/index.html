@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Pitch Panchayat 2026 — a student-led platform where bold ideas meet opportunity. Discover young innovators, ambitious startups, and the next generation of entrepreneurs.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Pitch Panchayat 2026 | Where Student Ideas Meet Opportunity</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style_main_web.css" >
     <script src="source/main_web.js" defer></script>
+
     
     
 </head>
@@ -14,10 +17,10 @@
         <nav class="parliament-nav">
 
     <div class="nav-logo">
-        <img src="logo.png" alt="">
+        <img src="logo.png" alt="Pitch Panchayat">
     </div>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#countdown">Timeline</a></li>
         <li><a href="#schedule">Schedule</a></li>
@@ -26,9 +29,25 @@
     </ul>
 
     <div class="nav-actions">
-<button class="register-btn" id="openAuth">
-     Register
-</button>
+
+        <button class="register-btn" id="openAuth">
+            Register
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
     </div>
 
 </nav>
@@ -2075,7 +2094,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             </div>
 
-        <form id="signupForm">
+        <!-- <form id="signupForm">
 
     <div class="input-group">
 
@@ -2136,7 +2155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     </span>
 
-</p>
+</p> -->
 
 <button type="button" id="googleSignIn" class="google-btn">
     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
@@ -2145,7 +2164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- LOGIN -->
 
-<form id="loginForm" class="auth-form-hidden">
+<!-- <form id="loginForm" class="auth-form-hidden">
 
     <div class="input-group">
 
@@ -2204,7 +2223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <button type="button" id="googleSignIn" class="google-btn">
     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
     Continue with Google
-</button>
+</button> -->
 
  <script type="module" src="./auth.js"></script>
 

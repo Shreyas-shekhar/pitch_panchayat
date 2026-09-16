@@ -26,7 +26,7 @@ async function generateRegistrationId() {
         "registrationCounter"
     );
 
-    const registrationId = await runTransaction(
+    return await runTransaction(
         db,
         async (transaction) => {
 
@@ -34,11 +34,9 @@ async function generateRegistrationId() {
                 await transaction.get(counterRef);
 
             if (!counterDoc.exists()) {
-
                 throw new Error(
                     "Registration counter not found in Firestore."
                 );
-
             }
 
             const current =
@@ -56,8 +54,6 @@ async function generateRegistrationId() {
             return `PP2026-${String(next).padStart(4, "0")}`;
         }
     );
-
-    return registrationId;
 }
 
 
@@ -86,7 +82,6 @@ if (form) {
 
             const user = auth.currentUser;
 
-
             if (!user) {
 
                 alert("Please login first.");
@@ -101,57 +96,43 @@ if (form) {
             try {
 
                 // ==================================================
-                // COLLECT FORM DATA FIRST
+                // MAIN FORM DATA
                 // ==================================================
 
                 const fullName =
-                    document.getElementById(
-                        "fullName"
-                    ).value.trim();
-
+                    document.getElementById("fullName")
+                        ?.value.trim() || "";
 
                 const email =
-                    document.getElementById(
-                        "email"
-                    ).value.trim();
-
+                    document.getElementById("email")
+                        ?.value.trim() || "";
 
                 const phone =
-                    document.getElementById(
-                        "phone"
-                    ).value.trim();
-
+                    document.getElementById("phone")
+                        ?.value.trim() || "";
 
                 const college =
-                    document.getElementById(
-                        "college"
-                    ).value.trim();
-
+                    document.getElementById("college")
+                        ?.value.trim() || "";
 
                 const age =
-                    document.getElementById(
-                        "age"
-                    ).value;
-
+                    document.getElementById("age")
+                        ?.value || "";
 
                 const idea =
-                    document.getElementById(
-                        "idea"
-                    ).value.trim();
-
+                    document.getElementById("idea")
+                        ?.value.trim() || "";
 
                 const teamName =
-                    document.getElementById(
-                        "teamName"
-                    ).value.trim();
+                    document.getElementById("teamName")
+                        ?.value.trim() || "";
 
 
                 // ==================================================
-                // PARTICIPANTS
+                // COLLECT PARTICIPANTS
                 // ==================================================
 
                 const participants = [];
-
 
                 for (let i = 1; i <= 5; i++) {
 
@@ -160,28 +141,52 @@ if (form) {
                             `participant${i}Name`
                         );
 
-
                     const phoneInput =
                         document.getElementById(
                             `participant${i}Phone`
                         );
 
 
-                    participants.push({
+                    const participantName =
+                        nameInput?.value.trim() || "";
 
-                        name:
-                            nameInput
-                                ? nameInput.value.trim()
-                                : "",
+                    const participantPhone =
+                        phoneInput?.value.trim() || "";
 
-                        phone:
-                            phoneInput
-                                ? phoneInput.value.trim()
-                                : ""
 
-                    });
+                    // Only save actual participants
+                    if (
+                        participantName ||
+                        participantPhone
+                    ) {
 
+                        participants.push({
+                            name: participantName,
+                            phone: participantPhone
+                        });
+
+                    }
                 }
+
+
+                // ==================================================
+                // DEBUG
+                // ==================================================
+
+                console.log(
+                    "Team Name:",
+                    teamName
+                );
+
+                console.log(
+                    "Participants:",
+                    participants
+                );
+
+                console.log(
+                    "Participant Count:",
+                    participants.length
+                );
 
 
                 // ==================================================
@@ -219,7 +224,7 @@ if (form) {
 
 
                 // ==================================================
-                // GENERATE PP ID
+                // GENERATE REGISTRATION ID
                 // ==================================================
 
                 const registrationId =
@@ -236,92 +241,110 @@ if (form) {
                 // SAVE TO FIRESTORE
                 // ==================================================
 
+                const registrationData = {
+
+                    // -----------------------------
+                    // REGISTRATION
+                    // -----------------------------
+
+                    registrationId:
+                        registrationId,
+
+                    uid:
+                        user.uid,
+
+                    userEmail:
+                        user.email || email,
+
+
+                    // -----------------------------
+                    // MAIN PARTICIPANT
+                    // -----------------------------
+
+                    fullName:
+                        fullName,
+
+                    email:
+                        email,
+
+                    phone:
+                        phone,
+
+                    college:
+                        college,
+
+                    age:
+                        age,
+
+                    idea:
+                        idea,
+
+
+                    // -----------------------------
+                    // TEAM
+                    // -----------------------------
+
+                    teamName:
+                        teamName,
+
+                    // NEW / CORRECT FIELD
+                    participants:
+                        participants,
+
+                    // COMPATIBILITY WITH OLD DASHBOARD
+                    teamMembers:
+                        participants,
+
+
+                    // -----------------------------
+                    // ATTENDANCE
+                    // -----------------------------
+
+                    attendance:
+                        false,
+
+                    checkInTime:
+                        null,
+
+
+                    // -----------------------------
+                    // TIMESTAMP
+                    // -----------------------------
+
+                    registeredAt:
+                        new Date()
+
+                };
+
+
+                console.log(
+                    "Saving registration:",
+                    registrationData
+                );
+
+
                 await addDoc(
                     collection(
                         db,
                         "registrations"
                     ),
-                    {
-
-                        // -----------------------------
-                        // REGISTRATION
-                        // -----------------------------
-
-                        registrationId:
-                            registrationId,
-
-                        uid:
-                            user.uid,
-
-                        userEmail:
-                            user.email || email,
+                    registrationData
+                );
 
 
-                        // -----------------------------
-                        // MAIN PARTICIPANT
-                        // -----------------------------
-
-                        fullName:
-                            fullName,
-
-                        email:
-                            email,
-
-                        phone:
-                            phone,
-
-                        college:
-                            college,
-
-                        age:
-                            age,
-
-                        idea:
-                            idea,
-
-
-                        // -----------------------------
-                        // TEAM
-                        // -----------------------------
-
-                        teamName:
-                            teamName,
-
-                        participants:
-                            participants,
-
-
-                        // -----------------------------
-                        // ATTENDANCE
-                        // -----------------------------
-
-                        attendance:
-                            false,
-
-                        checkInTime:
-                            null,
-
-
-                        // -----------------------------
-                        // TIMESTAMP
-                        // -----------------------------
-
-                        registeredAt:
-                            new Date()
-
-                    }
+                console.log(
+                    "Registration successfully saved to Firestore."
                 );
 
 
                 // ==================================================
-                // SAVE ID LOCALLY
+                // SAVE LOCALLY
                 // ==================================================
 
                 localStorage.setItem(
                     "registrationId",
                     registrationId
                 );
-
 
                 localStorage.setItem(
                     "registrationEmail",
@@ -377,15 +400,10 @@ onAuthStateChanged(
 
 
         const emailInput =
-            document.getElementById(
-                "email"
-            );
-
+            document.getElementById("email");
 
         const nameInput =
-            document.getElementById(
-                "fullName"
-            );
+            document.getElementById("fullName");
 
 
         if (emailInput) {
@@ -395,7 +413,6 @@ onAuthStateChanged(
 
             emailInput.readOnly =
                 true;
-
         }
 
 
@@ -406,8 +423,38 @@ onAuthStateChanged(
 
             nameInput.value =
                 user.displayName;
-
         }
 
     }
 );
+
+import {
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", async () => {
+
+        try {
+
+            await signOut(auth);
+
+            window.location.href = "index.html";
+
+        } catch (error) {
+
+            console.error("Logout error:", error);
+
+            alert("Unable to logout. Please try again.");
+
+        }
+
+    });
+
+}

@@ -197,6 +197,238 @@ select{
   gap: 12px;
 }
 
+/* ==========================================
+   MOBILE NAVIGATION BUTTON
+   ========================================== */
+
+.mobile-menu-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.06);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-btn span {
+    display: block;
+
+    width: 21px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+/* ==========================================
+   MOBILE NAVIGATION
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .parliament-nav {
+        height: var(--nav-h);
+
+        padding: 0 5%;
+
+        position: relative;
+
+        z-index: 1000;
+    }
+
+
+    .nav-logo img {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .nav-links {
+
+        position: absolute;
+
+        top: calc(100% + 10px);
+        left: 5%;
+        right: 5%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        justify-content: flex-start;
+
+        gap: 0;
+
+        padding: 10px;
+
+        margin: 0;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(7,17,31,0.98),
+                rgba(7,17,31,0.95)
+            );
+
+        border: 1px solid rgba(255,255,255,0.10);
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.35);
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transform: translateY(-10px);
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+
+    /* OPEN STATE */
+
+    .nav-links.active {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+
+    .nav-links li {
+        width: 100%;
+    }
+
+
+    .nav-links a {
+
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        min-height: 48px;
+
+        padding: 0 14px;
+
+        border-radius: 10px;
+
+        color: rgba(255,255,255,0.9);
+
+        text-decoration: none;
+    }
+
+
+    .nav-links a:hover {
+
+        background: rgba(255,255,255,0.06);
+
+        transform: none;
+    }
+
+
+    .nav-links a::after {
+        display: none;
+    }
+
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+
+    .register-btn {
+
+        padding: 10px 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* SHOW HAMBURGER */
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+
+    /* HAMBURGER → X */
+
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+   ========================================== */
+
+@media (max-width: 420px) {
+
+    .parliament-nav {
+        padding: 0 4%;
+    }
+
+    .nav-logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .register-btn {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .mobile-menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
 .register-btn,
 .primary-btn,
 .secondary-btn,
@@ -4853,6 +5085,133 @@ select {
         align-items: flex-start;
         padding-top: 20px;
         padding-bottom: 20px;
+    }
+
+}
+
+/* ==========================================
+   MOBILE EVENT PROGRESS / TIMELINE FIX
+   ========================================== */
+
+@media (max-width: 700px) {
+
+    .event-progress {
+        width: 100%;
+        max-width: 100%;
+        margin: 45px auto 10px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    /* Horizontal connecting line */
+    .progress-line {
+        position: absolute;
+        top: 16px;
+        left: 12%;
+        right: 12%;
+        width: auto;
+        height: 3px;
+        margin: 0;
+        z-index: 0;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    /* Four stages in one row */
+    .stages {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: start;
+        justify-items: center;
+        position: relative;
+        z-index: 2;
+        gap: 0;
+    }
+
+    .stage {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Dots */
+    .stage .dot {
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        border-radius: 50%;
+        margin: 0 auto 12px;
+        position: relative;
+        z-index: 3;
+        box-sizing: border-box;
+    }
+
+    /* Labels */
+    .stage span {
+        display: block;
+        width: 100%;
+        max-width: 78px;
+        margin: 0 auto;
+
+        font-size: 11px;
+        line-height: 1.25;
+        font-weight: 600;
+
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: normal;
+
+        text-align: center;
+    }
+
+    /* Don't let active/completed stages change layout */
+    .stage.completed,
+    .stage.active {
+        transform: none;
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+   ========================================== */
+
+@media (max-width: 400px) {
+
+    .event-progress {
+        padding: 0 4px;
+        margin-top: 40px;
+    }
+
+    .progress-line {
+        left: 11%;
+        right: 11%;
+        top: 15px;
+    }
+
+    .stage .dot {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        margin-bottom: 10px;
+    }
+
+    .stage span {
+        max-width: 68px;
+        font-size: 10px;
+        line-height: 1.2;
     }
 
 }
